@@ -9,7 +9,7 @@ class Plate(models.Model):
     alphaCode = models.CharField(max_length=5)
 
     def __str__(self):
-        return self.firstNum
+        return '%s %s %s %s' % (self.firstNum,  self.alphaCode, self.SecondNum, self.cityNum)
 
 
 class Car(models.Model):
@@ -19,11 +19,12 @@ class Car(models.Model):
     authorized = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.type
+        return '%s %s %s %s' % (self.plate, self.color, self.type, self.authorized)
 
 
 class Owner(models.Model):
     first_name = models.CharField(max_length=20)
+    img = models.ImageField(upload_to='profilePic', blank=True)
     family_name = models.CharField(max_length=30)
     phone = models.CharField(max_length=11, blank=True)
     nationalCode = models.CharField(max_length=10)
@@ -31,4 +32,4 @@ class Owner(models.Model):
     Car = models.ForeignKey(Car, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.first_name
+        return '%s %s %s %s %s' % (self.first_name, self.family_name, self.phone, self.nationalCode, self.description)
