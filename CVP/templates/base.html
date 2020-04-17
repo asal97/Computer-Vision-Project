@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
-{% include "header.html" %}
+
+<head>
+    <title>{% block title %}تشخیص پلاک وسایل نقلیه{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}
+    سامانه ی هوشمند تشخیص پلاک خودرو، موتورسیکلت، وسایل نقلیه ی عمومی و پلاک های خاص
+    {% endblock %}">
+    {% include "header.html" %}
+    {% block extra_header %}{% endblock %}
+</head>
+
 <body>
 {% include 'navbar.html' %}
 {% include 'menu.html' %}
 {% block content %} {% endblock %}
 {% include 'footer.html' %}
+{% block extra_scripts %} {% endblock %}
 {% include 'scripts.html' %}
+
 </body>
+
 </html>
