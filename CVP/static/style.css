@@ -434,6 +434,7 @@ body {}
 /*----------------------------------------*/
 .nav-tabs.notika-menu-wrap{
 	border-bottom: 0px solid #ddd;
+    display: -webkit-box;
 }
 .nav-tabs.notika-menu-wrap>li.active>a, .nav-tabs.notika-menu-wrap>li.active>a:focus, .nav-tabs.notika-menu-wrap>li.active>a:hover{
 	border: 0px solid #ddd;
@@ -2163,6 +2164,7 @@ abbr[title] {
 	margin-bottom:0px;
 }
 ol, ul{
+    direction: rtl;
 	margin:0px;
 	padding:0px;
 }
@@ -4071,9 +4073,10 @@ textarea.auto-size {
 }
 .menu-it-icon-pro i{
 	font-size: 18px;
-    margin-right: 3px;
+    margin-left: 4px;
     position: relative;
     top: 2px;
+    float: right;
 }
 .menu-it-icon-pro.mn-ic-cl i{
 	color:#00c292;
