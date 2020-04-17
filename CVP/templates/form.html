@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
-    {#<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">#}
-    {#<link href="hide-show-fields-form.css" rel="stylesheet"/>#}
 
+{% block extra_header %}
+{#    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">#}
+    <link href="{% static 'css/cvp-specials/hide-show-fields-form.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
     <form class="p-3">
         <div class="form-group">
             <label for="name">Name</label>
@@ -54,8 +57,10 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-
 {% endblock %}
-{#<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>#}
-{#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>#}
-{#<script src="hide-show-fields-form.js"></script>#}
+
+{% block extra_scripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/cvp-specials/hide-show-fields-form.js' %}"></script>
+{% endblock %}
