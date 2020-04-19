@@ -1,6 +1,8 @@
-from django import forms
+from django.forms import ModelForm
+from .models import Plate
 
 
-class CarRegister(forms.Form):
-    # TODO...
-    pass
+class PlateRegisterForm(ModelForm):
+    class Meta:
+        model = Plate
+        fields = ['plate_type', 'firstNum', 'alpha', 'secondNum', 'cityNum']
