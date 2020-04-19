@@ -7,10 +7,18 @@
 {% endblock %}
 
 {% block content %}
+    <h3 class="text-center">register new plate:</h3>
     <form action="{% url 'register' %}" method="post" novalidate>
         {% csrf_token %}
-        {{ plate_form }}
+        {{ plate_form.as_ul }}
         <input type="submit" name="form_name" value="plate_register">
+    </form>
+    <br>
+    <h3 class="text-center">register new vehicle:</h3>
+    <form action="{% url 'register' %}" method="post" novalidate>
+        {% csrf_token %}
+        {{ vehicle_form }}
+        <input type="submit" name="form_name" value="vehicle_register">
     </form>
     {#    <form class="p-3">#}
     {#        <div class="form-group">#}
