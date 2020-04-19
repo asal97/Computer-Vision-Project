@@ -18,7 +18,10 @@
     <form action="{% url 'register' %}" method="post" novalidate>
         {% csrf_token %}
         {{ vehicle_form }}
-        <input type="submit" name="form_name" value="vehicle_register">
+        <br>
+        <button class="btn btn-success" type="submit" name="form_name" value="vehicle_register">register car</button>
+        {#        <input type="submit" name="form_name" value="vehicle_register">#}
+
     </form>
     {#    <form class="p-3">#}
     {#        <div class="form-group">#}
