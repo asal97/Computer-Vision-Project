@@ -62,6 +62,9 @@ class Plate(models.Model):
         default=1
     )
 
+    class Meta:
+        unique_together = ('firstNum', 'secondNum', 'alpha', 'cityNum')
+
     def __str__(self):
         return '%s %s %s %s' % (self.firstNum, self.secondNum, self.cityNum, self.alpha)
 
@@ -71,7 +74,7 @@ class Owner(models.Model):
     img = models.ImageField(upload_to='profilePic', blank=True)
     family_name = models.CharField(max_length=30)
     phone = models.CharField(max_length=11, blank=True)
-    nationalCode = models.CharField(max_length=10)
+    nationalCode = models.CharField(max_length=10, unique=True)
     description = models.TextField(max_length=300)
 
     def __str__(self):
