@@ -238,7 +238,7 @@ body {}
 	z-index:9999;
 }
 .header-top-menu .nav.notika-top-nav li .message-dd .hd-mg-tt h2{
-   font-size: 30px;
+   font-size: 15px;
     color: #333;
     font-weight: 400;
     margin: 0;
@@ -437,6 +437,7 @@ body {}
 .nav-tabs.notika-menu-wrap{
 	border-bottom: 0px solid #ddd;
     display: -webkit-box;
+    direction: rtl;
 }
 .nav-tabs.notika-menu-wrap>li.active>a, .nav-tabs.notika-menu-wrap>li.active>a:focus, .nav-tabs.notika-menu-wrap>li.active>a:hover{
 	border: 0px solid #ddd;
@@ -460,7 +461,7 @@ body {}
     z-index: 99;
 }
 ul.notika-menu-wrap li a{
-	font-size: 20px;
+	font-size: 15px;
     color: #333;
     padding: 15px 25px;
 	border:none;
@@ -471,7 +472,7 @@ ul.notika-menu-wrap li a{
 .custom-menu-content ul.notika-main-menu-dropdown li a {
     padding: 20px 20px;
     display: block;
-	font-size:20px;
+	font-size:15px;
 	color:#333;
 }
 .custom-menu-content ul.notika-main-menu-dropdown li ul.layout-more-dp{
