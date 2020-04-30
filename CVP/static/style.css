@@ -461,7 +461,7 @@ body {}
     z-index: 99;
 }
 ul.notika-menu-wrap li a{
-	font-size: 15px;
+	font-size: 20px;
     color: #333;
     padding: 15px 25px;
 	border:none;
@@ -472,7 +472,7 @@ ul.notika-menu-wrap li a{
 .custom-menu-content ul.notika-main-menu-dropdown li a {
     padding: 20px 20px;
     display: block;
-	font-size:15px;
+	font-size:20px;
 	color:#333;
 }
 .custom-menu-content ul.notika-main-menu-dropdown li ul.layout-more-dp{
@@ -2599,7 +2599,7 @@ hr {
 }
 .table.table-striped>tbody>tr>td, .table.table-striped>tbody>tr>th, .table.table-striped>tfoot>tr>td, .table.table-striped>tfoot>tr>th, .table.table-striped>thead>tr>td, .table.table-striped>thead>tr>th{
 	border-top: 0px solid #F5F5F5;
-	font-size:14px;
+	font-size:17px;
 	color:#333;
 	padding:15px;
 }
