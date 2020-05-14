@@ -14,7 +14,7 @@ class VehicleAdmin(admin.ModelAdmin):
 
 class PlateAdmin(admin.ModelAdmin):
     list_display = ('plate_type', 'firstNum', 'alpha', 'secondNum', 'cityNum')
-    list_filter = ('plate_type','cityNum','alpha')
+    list_filter = ('plate_type', 'cityNum', 'alpha')
 
 
 admin.site.register(Vehicle, VehicleAdmin)
