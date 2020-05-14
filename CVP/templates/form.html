@@ -4,25 +4,67 @@
 {% block extra_header %}
     {#    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">#}
     <link href="{% static 'css/cvp-specials/hide-show-fields-form.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/cvp-specials/multi-page-form.css' %}" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
-    <h3 class="text-center">register new plate:</h3>
-    <form action="{% url 'register' %}" method="post" novalidate>
-        {% csrf_token %}
-        {{ plate_form.as_ul }}
-        <input type="submit" name="form_name" value="plate_register">
+    <!-- third try -->
+    <form id="regForm" action="/action_page.php">
+        <h1>Register:</h1>
+        <!-- One "tab" for each step in the form: -->
+        <div class="tab">Name:
+            <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
+            <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+        </div>
+        <div class="tab">Contact Info:
+            <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+            <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+        </div>
+        <div class="tab">Birthday:
+            <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+            <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
+            <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+        </div>
+        <div class="tab">Login Info:
+            <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
+            <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+        </div>
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
     </form>
-    <br>
-    <h3 class="text-center">register new vehicle:</h3>
-    <form action="{% url 'register' %}" method="post" novalidate>
-        {% csrf_token %}
-        {{ vehicle_form }}
-        <br>
-        <button class="btn btn-success" type="submit" name="form_name" value="vehicle_register">register car</button>
-        {#        <input type="submit" name="form_name" value="vehicle_register">#}
 
-    </form>
+
+    <!-- second try -->
+    {#    <h3 class="text-center">register new plate:</h3>#}
+    {#    <form action="{% url 'register' %}" method="post" novalidate>#}
+    {#        {% csrf_token %}#}
+    {#        {{ plate_form.as_ul }}#}
+    {#        <input type="submit" name="form_name" value="plate_register">#}
+    {#    </form>#}
+    {#    <br>#}
+    {#    <h3 class="text-center">register new vehicle:</h3>#}
+    {#    <form action="{% url 'register' %}" method="post" novalidate>#}
+    {#        {% csrf_token %}#}
+    {#        {{ vehicle_form }}#}
+    {#        <br>#}
+    {#        <button class="btn btn-success" type="submit" name="form_name" value="vehicle_register">register car</button>#}
+    {#        <input type="submit" name="form_name" value="vehicle_register">#}
+    {##}
+    {#    </form>#}
+
+
+    <!-- first try -->
     {#    <form class="p-3">#}
     {#        <div class="form-group">#}
     {#            <label for="name">Name</label>#}
@@ -78,5 +120,6 @@
 {% block extra_scripts %}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-    <script src="{% static 'js/cvp-specials/hide-show-fields-form.js' %}"></script>
+{#    <script src="{% static 'js/cvp-specials/hide-show-fields-form.js' %}"></script>#}
+    <script src="{% static 'js/cvp-specials/multi-page-form.js' %}"></script>
 {% endblock %}
