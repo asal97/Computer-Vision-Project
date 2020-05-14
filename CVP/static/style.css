@@ -54,7 +54,9 @@
 /*----------------------------------------*/
 /*  1.  Theme default CSS
 /*----------------------------------------*/
-html, body {font-family: 'Roboto', sans-serif;font-weight:400;}
+html, body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Scheherazade', serif;
+}
 body {background:#F6F8FA;}
 .floatleft {float:left}
 .floatright {float:right}
@@ -236,7 +238,7 @@ body {}
 	z-index:9999;
 }
 .header-top-menu .nav.notika-top-nav li .message-dd .hd-mg-tt h2{
-   font-size: 16px;
+   font-size: 15px;
     color: #333;
     font-weight: 400;
     margin: 0;
@@ -262,7 +264,7 @@ body {}
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 20px;
+    font-size: 30px;
     width: 50px;
     height: 40px;
     text-align: center;
@@ -434,6 +436,8 @@ body {}
 /*----------------------------------------*/
 .nav-tabs.notika-menu-wrap{
 	border-bottom: 0px solid #ddd;
+    display: -webkit-box;
+    direction: rtl;
 }
 .nav-tabs.notika-menu-wrap>li.active>a, .nav-tabs.notika-menu-wrap>li.active>a:focus, .nav-tabs.notika-menu-wrap>li.active>a:hover{
 	border: 0px solid #ddd;
@@ -468,7 +472,7 @@ ul.notika-menu-wrap li a{
 .custom-menu-content ul.notika-main-menu-dropdown li a {
     padding: 20px 20px;
     display: block;
-	font-size:14px;
+	font-size:15px;
 	color:#333;
 }
 .custom-menu-content ul.notika-main-menu-dropdown li ul.layout-more-dp{
@@ -532,6 +536,16 @@ ul.notika-menu-wrap li a{
 .flot-chart.flot-chart-sts{
 	height: 308px;
 }
+
+.vid{
+    direction: ltr;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 824px;
+    height: 308px;
+}
+
 #flotTip, .flot-tooltip {
     position: absolute;
     color: #333;
@@ -2020,7 +2034,6 @@ ul.wizard-nav-ac li .disabled{
 	padding: 0px;
 	border: 0px solid rgba(0,0,0,.2);
 	border-radius: 2px;
-	font-family: 'Roboto', sans-serif;
 	box-shadow: 0 2px 10px rgba(0,0,0,.2);
 }
 .popover-cl-pro .popover .popover-title{
@@ -2163,6 +2176,7 @@ abbr[title] {
 	margin-bottom:0px;
 }
 ol, ul{
+    direction: rtl;
 	margin:0px;
 	padding:0px;
 }
@@ -3356,8 +3370,7 @@ textarea.auto-size {
     border: 0px solid rgba(0, 0, 0, 0.2);
     border-radius: 0px;
     color: #333;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 30px;
 	width: 300px;
 }
 .datepicker-days  .table-condensed thead tr{
@@ -4071,9 +4084,10 @@ textarea.auto-size {
 }
 .menu-it-icon-pro i{
 	font-size: 18px;
-    margin-right: 3px;
+    margin-left: 4px;
     position: relative;
     top: 2px;
+    float: right;
 }
 .menu-it-icon-pro.mn-ic-cl i{
 	color:#00c292;
