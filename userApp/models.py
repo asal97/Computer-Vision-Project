@@ -7,11 +7,11 @@ User = get_user_model()
 
 
 class SystemUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     phone = models.CharField(max_length=30, blank=True)
     nationalCode = models.CharField(max_length=10)
     approved = models.BooleanField(default=False)
-
+    date_created = models.DateTimeField(auto_now_add=True)
 
 
 @receiver(post_save, sender=User)
