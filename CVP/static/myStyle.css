@@ -1,0 +1,22 @@
+.basic_table{
+    direction: rtl;
+    margin: 5px;
+    font-size: 35px;
+}
+.table_head{
+    font-size: 20px;
+}
+.mytitleh2{
+     direction: rtl;
+    margin: 5px;
+    font-size: 30px;
+}
+.capture{
+    direction: ltr;
+    position: relative;
+    left:0px; top:0px;
+    width: 824px;
+    height: 272px;
+    background: #ffffff;
+    padding: 5px;
+}
