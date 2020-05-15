@@ -12,10 +12,7 @@
     font-size: 30px;
 }
 .capture{
-    direction: ltr;
-    position: relative;
-    left:0px; top:0px;
-    width: 824px;
-    height: 272px;
+
+    border: 7px solid  #00c292;
 
 }
