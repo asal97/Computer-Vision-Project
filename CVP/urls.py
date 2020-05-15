@@ -19,12 +19,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from CVP import views
-from .views import index
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('table/', views.table, name='table')
+    path('table/', views.table, name='table'),
+    path('login/', views.login, name='login')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

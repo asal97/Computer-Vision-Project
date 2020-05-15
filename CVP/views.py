@@ -7,3 +7,7 @@ def index(request):
 
 def table(request):
     return render(request, 'table.html', {})
+
+
+def login(request):
+    return render(request, 'login-register.html', {})
