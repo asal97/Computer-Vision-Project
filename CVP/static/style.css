@@ -2378,7 +2378,7 @@ hr {
 .icheckbox_square-green, .iradio_square-green {
     display: inline-block;
     vertical-align: middle;
-    margin: 0;
+    margin-right: 5px;
     padding: 0;
     width: 22px;
     height: 22px;
@@ -2777,6 +2777,8 @@ hr {
     padding: 0px;
 	resize: none;
 	border-radius:0px;
+    text-align: center;
+    font-size: 20px;
 }
 .nk-int-st textarea:active, .nk-int-st textarea:focus, .nk-int-st textarea:hover, .nk-int-st [type="password"]:focus, .nk-int-st [type="password"]:active{
 	box-shadow: none;
@@ -3618,6 +3620,7 @@ textarea.auto-size {
 }
 .nk-block:not(.lc-block-alt) .nk-form{
     padding:40px;
+    direction: rtl;
 }
 .nk-block:not(.lc-block-alt) .btn-login{
     top:50%;
