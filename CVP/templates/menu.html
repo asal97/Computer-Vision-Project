@@ -1,6 +1,16 @@
-
 {% load static %}
 <!-- Mobile Menu start -->
+<div>
+
+{% if not user.is_authenticated %}
+    <a href="{% url 'login' %}"><span
+            class="id_user"> ورود</span></a>
+    <!--TODO: Add profile page if needed-->
+{% else %}
+    <a href="{% url 'logout' %}"><span class="id_user">{{ user.profile.approved }}  [خروج]</span></a>
+{% endif %}
+
+</div>
 <div class="mobile-menu-area">
     <div class="container">
         <div class="row">
@@ -10,8 +20,8 @@
                         <ul class="mobile-menu-nav">
                             <li><a data-toggle="collapse" data-target="#demo" href="#">نظارت</a>
                                 <ul id="demo" class="collapse dropdown-header-top">
-                                      <li><a href="{% url 'index' %}">نظارت انلاین</a></li>
-                                      <li><a href="{% url 'table' %}">گزارشات</a></li>
+                                    <li><a href="{% url 'index' %}">نظارت انلاین</a></li>
+                                    <li><a href="{% url 'table' %}">گزارشات</a></li>
                                 </ul>
                             </li>
                             <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">تنظیمات</a>
@@ -40,7 +50,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                    <li ><a data-toggle="tab" href="#Forms"><i class="notika-icon notika-form"></i>نظارت</a>
+                    <li><a data-toggle="tab" href="#Forms"><i class="notika-icon notika-form"></i>نظارت</a>
                     </li>
                     <li><a data-toggle="tab" href="#Appviews"><i class="notika-icon notika-app"></i>تنظیمات</a>
                     </li>
@@ -51,7 +61,7 @@
 
                     <div id="Forms" class="tab-pane notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
-                             <li><a href="{% url 'index' %}">نظارت انلاین</a>
+                            <li><a href="{% url 'index' %}">نظارت انلاین</a>
                             </li>
                             <li><a href="{% url 'table' %}">گزارشات</a>
                             </li>

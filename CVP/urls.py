@@ -27,7 +27,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('table/', views.table, name='table'),
 
-    url(r'^login/', include('userApp.urls')),
+    url(r'^account/', include('userApp.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
