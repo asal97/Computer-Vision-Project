@@ -53,7 +53,7 @@ class Plate(models.Model):
 
     firstNum = models.IntegerField()
     secondNum = models.IntegerField()
-    cityNum = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(10)], blank=True,default=100)
+    cityNum = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(10)], blank=True, default=100)
     alpha = models.CharField(
         max_length=3,
         choices=ALPHA_CHOICES,
@@ -62,10 +62,19 @@ class Plate(models.Model):
     )
 
     class Meta:
-        unique_together = ('firstNum', 'secondNum','cityNum')
+        unique_together = ('firstNum', 'secondNum', 'cityNum')
 
     def __str__(self):
-        return '%s %s %s %s' % (self.firstNum, self.secondNum, self.cityNum, self.alpha)
+        if self.plate_type == '2':
+            return '%s - %s - %s' % (self.get_plate_type_display(), self.secondNum,self.firstNum)
+        else:
+            return '%s ایران - %s - %s - %s' % (self.cityNum ,self.secondNum,self.get_alpha_display(),self.firstNum)
+
+    def get_status(self):
+        if self.plate_type == '2':
+            return '%s - %s' % (self.secondNum, self.firstNum)
+        else:
+            return '%s ایران - %s - %s - %s' % (self.cityNum, self.secondNum, self.get_alpha_display(), self.firstNum)
 
 
 class Owner(models.Model):
@@ -77,7 +86,8 @@ class Owner(models.Model):
     description = models.TextField(max_length=300)
 
     def __str__(self):
-        return 'Full Name: %s %s | phone:%s | National Code: %s | %s' % (self.first_name, self.family_name, self.phone, self.nationalCode, self.description)
+        return 'Full Name: %s %s | phone:%s | National Code: %s | %s' % (
+            self.first_name, self.family_name, self.phone, self.nationalCode, self.description)
 
 
 class Vehicle(models.Model):
@@ -89,3 +99,6 @@ class Vehicle(models.Model):
 
     def __str__(self):
         return '%s %s %s' % (self.plate, self.color, self.type)
+
+    def get_status(self):
+        return '%s' % self.plate
