@@ -53,7 +53,7 @@ class Plate(models.Model):
 
     firstNum = models.IntegerField()
     secondNum = models.IntegerField()
-    cityNum = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(10)], blank=True,default=100)
+    cityNum = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(10)], blank=True, default=100)
     alpha = models.CharField(
         max_length=3,
         choices=ALPHA_CHOICES,
@@ -62,7 +62,7 @@ class Plate(models.Model):
     )
 
     class Meta:
-        unique_together = ('firstNum', 'secondNum','cityNum')
+        unique_together = ('firstNum', 'secondNum', 'cityNum')
 
     def __str__(self):
         return '%s %s %s %s' % (self.firstNum, self.secondNum, self.cityNum, self.alpha)
@@ -70,14 +70,15 @@ class Plate(models.Model):
 
 class Owner(models.Model):
     first_name = models.CharField(max_length=20)
-    img = models.ImageField(upload_to='profilePic', blank=True)
+    img = models.ImageField(upload_to='profilePic/', blank=True)
     family_name = models.CharField(max_length=30)
     phone = models.CharField(max_length=11, blank=True)
     nationalCode = models.CharField(max_length=10, unique=True)
     description = models.TextField(max_length=300)
 
     def __str__(self):
-        return 'Full Name: %s %s | phone:%s | National Code: %s | %s' % (self.first_name, self.family_name, self.phone, self.nationalCode, self.description)
+        return 'Full Name: %s %s | phone:%s | National Code: %s | %s' % (
+        self.first_name, self.family_name, self.phone, self.nationalCode, self.description)
 
 
 class Vehicle(models.Model):

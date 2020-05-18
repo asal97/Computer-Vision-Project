@@ -8,6 +8,18 @@
 {% endblock %}
 
 {% block content %}
+
+    <h1> this is a test form: </h1>
+
+
+    <form id="register-form" action="{% url 'register' %}" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <input name="form-key" value="ثبت-مشخصات" hidden>
+        {{ register_form }}
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+
     <!-- third try -->
     <form id="regForm" action="/action_page.php">
         <h1>Register:</h1>
@@ -120,6 +132,6 @@
 {% block extra_scripts %}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-{#    <script src="{% static 'js/cvp-specials/hide-show-fields-form.js' %}"></script>#}
+    {#    <script src="{% static 'js/cvp-specials/hide-show-fields-form.js' %}"></script>#}
     <script src="{% static 'js/cvp-specials/multi-page-form.js' %}"></script>
 {% endblock %}
