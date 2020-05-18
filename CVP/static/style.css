@@ -55,7 +55,7 @@
 /*  1.  Theme default CSS
 /*----------------------------------------*/
 html, body, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Scheherazade', serif;
+    font-family:  'Roboto', 'Scheherazade', serif ;
 }
 body {background:#F6F8FA;}
 .floatleft {float:left}
@@ -2624,6 +2624,7 @@ hr {
 }
 .table.table-striped>thead>tr>th {
     border-bottom: 0px solid #ddd;
+    font-size:22px;
 }
 .table.table-sc-ex>thead>tr>th {
     border-bottom: 0px solid #ddd;

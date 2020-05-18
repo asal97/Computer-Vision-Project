@@ -19,7 +19,7 @@
                             <h2><span class="counter">50,000</span></h2>
                             <p>Total Website Traffics</p>
                         </div>
-                        <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5</div>
+                        <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5,9,4,8,6,5,6,4,8,3,5,9,5</div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
@@ -99,7 +99,7 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                 <tr>
-                                        <th class="table_head">پلاک</th>
+                                        <th>پلاک</th>
                                         <th>رنگ خودرو</th>
                                         <th>مدل خودرو</th>
                                         <th>مجوز عبور </th>
@@ -111,11 +111,19 @@
                                 {% for data in Taradod_list %}
                                 <tr>
 
-                                    <td>{{ data.plate }}</td>
-                                    <td>{{ data.color }}</td>
-                                    <td>{{ data.type }}</td>
-                                    <td>{{ data.approved }}</td>
-                                    <td>{{data.seen}}</td>
+                                    <td class="persianTable">{{ data.plate }}</td>
+                                    <td class="persianTable">{{ data.color }}</td>
+                                    <td class="persianTable">{{ data.type }}</td>
+                                    {% if data.approved == True %}
+                                        <td>
+                                            <button  class=" disabled  button-icon-btn btn btn-success success-icon-notika btn-reco-mg "><i class="notika-icon notika-checked"></i></button></td>
+                                    {% endif%}
+
+                                    {% if data.approved == False %}
+                                        <td><button class="disabled  button-icon-btn btn btn-danger danger-icon-notika btn-reco-mg"><i class="notika-icon notika-close"></i></button></td>
+                                    {% endif %}
+
+                                    <td class="persianTable">{{data.seen}}</td>
 
                                 </tr>
                                 {% endfor %}
@@ -123,11 +131,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                   <th class="table_head">پلاک</th>
-                                        <th>رنگ خودرو</th>
-                                        <th>مدل خودرو</th>
-                                         <th>مجوز عبور </th>
-                                        <th>تاریخ</th>
+
                                 </tr>
                                 </tfoot>
                             </table>

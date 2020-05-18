@@ -3,11 +3,8 @@
     margin: 5px;
     font-size: 35px;
 }
-.table_head{
-    font-size: 20px;
-}
 .mytitleh2{
-     direction: rtl;
+    direction: rtl;
     margin: 5px;
     font-size: 30px;
 }
@@ -15,4 +12,14 @@
 
     border: 7px solid  #00c292;
 
+}
+.notShadow{
+    box-shadow: none;
+}
+.persianTable{
+  font-size-adjust: 0.5;
+}
+
+.disabled{
+  pointer-events: none;
 }
