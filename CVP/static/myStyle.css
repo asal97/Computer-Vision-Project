@@ -23,3 +23,6 @@
 .disabled{
   pointer-events: none;
 }
+.pForDiagram{
+    font-size: 218px;
+}

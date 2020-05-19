@@ -66,13 +66,13 @@ class Plate(models.Model):
 
     def __str__(self):
         if self.plate_type == '2':
-            return '%s - %s - %s' % (self.get_plate_type_display(), self.secondNum,self.firstNum)
+            return '%s - %s - %s' % (self.get_plate_type_display(), self.secondNum, self.firstNum)
         else:
-            return '%s ایران - %s - %s - %s' % (self.cityNum ,self.secondNum,self.get_alpha_display(),self.firstNum)
+            return '%s ایران - %s - %s - %s' % (self.cityNum, self.secondNum, self.get_alpha_display(), self.firstNum)
 
     def get_status(self):
         if self.plate_type == '2':
-            return '%s - %s' % (self.secondNum, self.firstNum)
+            return '%s - %s - %s' % (self.get_plate_type_display(), self.secondNum, self.firstNum)
         else:
             return '%s ایران - %s - %s - %s' % (self.cityNum, self.secondNum, self.get_alpha_display(), self.firstNum)
 
