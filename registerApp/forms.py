@@ -9,9 +9,9 @@ class RegisterForm(forms.Form):
     owner_firstname = forms.CharField(max_length=20, required=True)
     owner_lastname = forms.CharField(max_length=30, required=True)
     owner_nationalcode = forms.CharField(max_length=10, required=True)
-    owner_phone = forms.CharField(max_length=11)
-    owner_description = forms.CharField(widget=forms.Textarea)
-    owner_picture = forms.ImageField()
+    owner_phone = forms.CharField(max_length=11, required=False)
+    owner_description = forms.CharField(widget=forms.Textarea, required=False)
+    owner_picture = forms.ImageField(required=False)
 
     plate_type = forms.ChoiceField(choices=PLATE_CHOICES)
     plate_firstnum = forms.IntegerField()
