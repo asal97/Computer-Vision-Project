@@ -5,7 +5,7 @@ from registerApp.models import Plate, Owner, Vehicle
 from taradodApp.models import Taradod
 import jdatetime
 from django.db.models import Count
-from django.db.models.functions import ExtractDay, ExtractHour
+from django.db.models.functions import ExtractDay, ExtractHour, ExtractWeekDay
 from calendar import monthrange
 
 from collections import Counter
@@ -45,7 +45,6 @@ def get_countHour(Tlist):
 
 
 def get_total_today(taradod):
-    print("hour ",datetime.datetime.now().astimezone().hour)
     qn = taradod.filter(
         seen__day=datetime.datetime.now().astimezone().day
     ).annotate(
@@ -56,16 +55,25 @@ def get_total_today(taradod):
         n=Count('pk')
     ).order_by('hour')
 
-    print("qn12 hour ", qn)
-
     data = Counter({d['hour']: d['n'] for d in qn})
 
     ds = 23
     result = [data[i] for i in range(0, ds + 1)]
-    print("result hour ", result)
     return result
 
+
+def get_week_day(taradod):
+    week = taradod.annotate(weekday=ExtractWeekDay('seen')).values('weekday').annotate(count=Count('id')).values(
+        'weekday', 'count')
+    data = Counter({d['weekday']: d['count'] for d in week})
+    result = [data[i] for i in range(0, 7)]
+    print("week result ", result)
+
+    return result
+
+
 def table(request):
+    print("weekday ", (datetime.datetime.now().weekday() + 2) % 7)
     Owner_lists = Owner.objects.all()
     all_Vehicle_list = Vehicle.objects.all()
     Taradod_list = Taradod.objects.all()
@@ -75,6 +83,7 @@ def table(request):
     for vehicle in Vehicle.objects.all():
         Vehicle_list.append(vehicle.plate.get_status())
 
+    week = get_week_day(Taradod_list)
 
     qs = Taradod_list.filter(
         seen__year=datetime.datetime.now().year,
@@ -97,7 +106,6 @@ def table(request):
     print("day result ", result)
     print("len day", len(result))
 
-
     # Taradod_list = Taradod_list.filter(seen__week_day=((datetime.datetime.today().weekday()) + 2) % 7)
     print("today " + str(datetime.datetime.today().weekday()))
     for taradod in Taradod_list:
@@ -111,6 +119,8 @@ def table(request):
             taradod.approved = True
 
     context = {
+        'weekCount': np.sum(week),
+        'week': week,
         'todayCount': np.sum(today),
         'today': today,
         'Taradod_list': Taradod_list,

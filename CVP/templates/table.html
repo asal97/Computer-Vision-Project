@@ -29,10 +29,14 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class=" wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class=" website-traffic-ctn">
-                            <h2><span class="counter">50,000</span></h2>
+                            <h2><span class="counter">{{ weekCount }}</span></h2>
                             <p>هفت روز گذشته</p>
                         </div>
-                        <div class="sparkline-bar-stats1">1,4,8,3,5,6,4,</div>
+                        <div class="sparkline-bar-stats1">
+                            {% for day in week %}
+                                {{ day }},
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
