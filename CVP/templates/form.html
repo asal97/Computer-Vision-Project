@@ -17,25 +17,88 @@
 
         <h1>ثبت وسیله ی نقلیه جدید</h1>
         <!-- One "tab" for each step in the form: -->
-        <div class="tab">مشخصات مالک:
-            {{ register_form.owner_firstname }}
-            {{ register_form.owner_lastname }}
-            {{ register_form.owner_nationalcode }}
+        <div class="tab">
 
-            {#            {{ register_form.owner_phone }}#}
-            <div class="form-group">
-                <input id="phone-number" name="phone-number" type="number" placeholder="شماره تماس"
-                        onKeyDown="if(this.value.length==11 && event.keyCode!=8) return false;">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group ic-cmp-int">
+                    <div class="nk-int-st">
+                        <p style="text-align: right;">مشخصات مالک</p>
+                    </div>
+                    <div class="form-ic-cmp">
+                        <i class="notika-icon notika-support"></i>
+                    </div>
+                </div>
             </div>
 
-            {#            {{ register_form.owner_description }}#}
+
             <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="nk-int-st">
+                            {#{{ register_form.owner_firstname }}#}
+                            <input type="text" class="form-control" maxlength="30" placeholder="نام خانوادگی"
+                                   name="owner_lastname">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="nk-int-st">
+                            {#{{ register_form.owner_firstname }}#}
+                            <input type="text" class="form-control" maxlength="20" placeholder="نام"
+                                   name="owner_firstname">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group ic-cmp-int">
+                        <div class="nk-int-st">
+                            {#{{ register_form.owner_phone }}#}
+                            <input type="number" class="form-control" placeholder="شماره تماس"
+                                   name="owner_phone"
+                                   onKeyDown="if(this.value.length==11 && event.keyCode!==8) return false;">
+                        </div>
+                        <div class="form-ic-cmp">
+                            <i class="notika-icon notika-phone"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group ic-cmp-int">
+                        <div class="nk-int-st">
+                            {#{{ register_form.owner_nationalcode }}#}
+                            <input type="number" class="form-control" placeholder="کد ملی"
+                                   name="owner_nationalcode"
+                                   onKeyDown="if(this.value.length==10 && event.keyCode!==8) return false;">
+                        </div>
+                        <div class="form-ic-cmp">
+                            <i class="notika-icon notika-credit-card"></i>
+                        </div>
+                    </div>
+                </div>
+
+                {#            {{ register_form.owner_description }}#}
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <div class="nk-int-st">
-                    <textarea class="form-control auto-size" rows="2" name="owner_description"
+                    <textarea class="form-control auto-size" rows="2" maxlength="300" name="owner_description"
                               placeholder="توضیحات"></textarea>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group ic-cmp-int">
+                    <div class="nk-int-st">
+                        <p style="text-align: right;">تصویر مالک</p>
+                    </div>
+                    <div class="form-ic-cmp">
+                        <i class="notika-icon notika-picture"></i>
                     </div>
                 </div>
             </div>
@@ -67,14 +130,13 @@
         {#            <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>#}
         {#            <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>#}
         {#        </div>#}
-
+        <br>
         <div style="overflow:auto;">
             <div style="float:right;">
-                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">بخش قبلی</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">بخش بعدی</button>
             </div>
         </div>
-
         <!-- Circles which indicates the steps of the form: -->
         <div style="text-align:center;margin-top:40px;">
             <span class="step"></span>
