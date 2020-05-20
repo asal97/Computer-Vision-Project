@@ -5,6 +5,7 @@
     {#    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">#}
     <link href="{% static 'css/cvp-specials/hide-show-fields-form.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/cvp-specials/multi-page-form.css' %}" rel="stylesheet"/>
+    <link href="{% static 'style.css' %}" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
@@ -20,8 +21,24 @@
             {{ register_form.owner_firstname }}
             {{ register_form.owner_lastname }}
             {{ register_form.owner_nationalcode }}
-            {{ register_form.owner_phone }}
-            {{ register_form.owner_description }}
+
+            {#            {{ register_form.owner_phone }}#}
+            <div class="form-group">
+                <input id="phone-number" name="phone-number" type="number" placeholder="شماره تماس"
+                        onKeyDown="if(this.value.length==11 && event.keyCode!=8) return false;">
+            </div>
+
+            {#            {{ register_form.owner_description }}#}
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <div class="nk-int-st">
+                    <textarea class="form-control auto-size" rows="2" name="owner_description"
+                              placeholder="توضیحات"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {{ register_form.owner_picture }}
             {#            <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>#}
             {#            <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>#}
@@ -46,10 +63,10 @@
             {#            <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>#}
         </div>
 
-{#        <div class="tab">Login Info:#}
-{#            <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>#}
-{#            <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>#}
-{#        </div>#}
+        {#        <div class="tab">Login Info:#}
+        {#            <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>#}
+        {#            <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>#}
+        {#        </div>#}
 
         <div style="overflow:auto;">
             <div style="float:right;">
@@ -66,26 +83,6 @@
         </div>
 
     </form>
-
-
-    <!-- second try -->
-    {#    <h3 class="text-center">register new plate:</h3>#}
-    {#    <form action="{% url 'register' %}" method="post" novalidate>#}
-    {#        {% csrf_token %}#}
-    {#        {{ plate_form.as_ul }}#}
-    {#        <input type="submit" name="form_name" value="plate_register">#}
-    {#    </form>#}
-    {#    <br>#}
-    {#    <h3 class="text-center">register new vehicle:</h3>#}
-    {#    <form action="{% url 'register' %}" method="post" novalidate>#}
-    {#        {% csrf_token %}#}
-    {#        {{ vehicle_form }}#}
-    {#        <br>#}
-    {#        <button class="btn btn-success" type="submit" name="form_name" value="vehicle_register">register car</button>#}
-    {#        <input type="submit" name="form_name" value="vehicle_register">#}
-    {##}
-    {#    </form>#}
-
 
     <!-- first try -->
     {#    <form class="p-3">#}
@@ -138,11 +135,19 @@
     {#        </div>#}
     {#        <button type="submit" class="btn btn-primary">Submit</button>#}
     {#    </form>#}
+
 {% endblock %}
 
 {% block extra_scripts %}
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- textarea autosize: -->
+    <script src="{% static 'js/autosize.min.js' %}"></script>
+
+    <!-- .......................................................................................... -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
     {#    <script src="{% static 'js/cvp-specials/hide-show-fields-form.js' %}"></script>#}
     <script src="{% static 'js/cvp-specials/multi-page-form.js' %}"></script>
 {% endblock %}

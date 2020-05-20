@@ -2875,6 +2875,7 @@ hr {
     margin-bottom: 0px;
 }
 textarea.auto-size {
+    text-align: right;
     height: 100%;
     text-rendering: auto;
     letter-spacing: normal;
