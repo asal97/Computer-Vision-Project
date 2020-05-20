@@ -2,13 +2,13 @@
 <!-- Mobile Menu start -->
 <div>
 
-{% if not user.is_authenticated %}
-    <a href="{% url 'login' %}"><span
-            class="id_user"> ورود</span></a>
-    <!--TODO: Add profile page if needed-->
-{% else %}
-    <a href="{% url 'logout' %}"><span class="id_user">{{ user.profile.approved }}  [خروج]</span></a>
-{% endif %}
+{#{% if not user.is_authenticated %}#}
+{#    <a href="{% url 'login' %}"><span#}
+{#            class="id_user"> ورود</span></a>#}
+{#    <!--TODO: Add profile page if needed-->#}
+{#{% else %}#}
+{#    <a href="{% url 'logout' %}"><span class="id_user">{{ user.profile.approved }}  [خروج]</span></a>#}
+{#{% endif %}#}
 
 </div>
 <div class="mobile-menu-area">

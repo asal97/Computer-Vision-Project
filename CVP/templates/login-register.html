@@ -73,6 +73,8 @@
 <div class="login-content">
     <!-- Login -->
     <div class="nk-block toggled" id="l-login">
+        <h1>ورود به سامانه ی تشخیص پلاک</h1>
+        <h5>(توجه کنید تنها در صورتی که ثبت نام شما تایید شده باشد حق ورود خواهید داشت)</h5>
         <div class="nk-form">
             <form id="login-form" method="post"
                   action="{% url 'login' %}">
@@ -105,58 +107,94 @@
 
         <div class="nk-navigation nk-lg-ic">
             <a href="#" data-ma-action="nk-login-switch" data-ma-block="#l-register"><i
-                    class="notika-icon notika-plus-symbol"></i> <span>Register</span></a>
-            <a href="#" data-ma-action="nk-login-switch" data-ma-block="#l-forget-password"><i>?</i> <span>Forgot Password</span></a>
+                    class="notika-icon notika-plus-symbol"></i> <span>ثبت نام</span></a>
+            <a href="#" data-ma-action="nk-login-switch" data-ma-block="#l-forget-password"><i>?</i> <span>فراموشی گذرواژه</span></a>
         </div>
     </div>
 
     <!-- Register -->
     <div class="nk-block" id="l-register">
+        <h1>ثبت نام در سامانه ی تشخیص پلاک</h1>
         <div class="nk-form">
 
+            <form id="signup-form" method="post"
+                  action="{% url 'login' %}">
+                {% csrf_token %}
+                <input name="form-key" value="ثبت نام" hidden>
+                {#                                {{ signup_form.as_p }}#}
 
-            <div class="input-group">
-                <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
-                <div class="nk-int-st">
-                    <input type="text" class="form-control" placeholder="نام کاربری">
+                <div class="input-group">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
+                    <div class="nk-int-st">
+                        <input name="first_name" type="text" class="form-control" placeholder="نام">
+                    </div>
                 </div>
-            </div>
-
-            <div class="input-group mg-t-15">
-                <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-mail"></i></span>
-                <div class="nk-int-st">
-                    <input type="text" class="form-control" placeholder="پست الکترونیکی">
+                <div class="input-group">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
+                    <div class="nk-int-st">
+                        <input name="last_name" type="text" class="form-control" placeholder="نام خانوادگی">
+                    </div>
                 </div>
-            </div>
-
-            <div class="input-group mg-t-15">
-                <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
-                <div class="nk-int-st">
-                    <input type="password" class="form-control" placeholder="گذرواژه">
+                <div class="input-group">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-phone"></i></span>
+                    <div class="nk-int-st">
+                        <input name="phone" type="text" class="form-control" placeholder="شماره تماس">
+                    </div>
                 </div>
-            </div>
+                <div class="input-group">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-credit-card"></i></span>
+                    <div class="nk-int-st">
+                        <input name="nationalCode" type="text" class="form-control" placeholder="کد ملی">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
+                    <div class="nk-int-st">
+                        <input name="username" type="text" class="form-control" placeholder="نام کاربری">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-mail"></i></span>
+                    <div class="nk-int-st">
+                        <input name="email" type="text" class="form-control" placeholder="آدرس ایمیل">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
+                    <div class="nk-int-st">
+                        <input name="password1" type="password" class="form-control" placeholder="گذرواژه">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
+                    <div class="nk-int-st">
+                        <input name="password2" type="password" class="form-control" placeholder="تکرار گذرواژه">
+                    </div>
+                </div>
 
-            <a href="#l-login" data-ma-action="nk-login-switch" data-ma-block="#l-login"
-               class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow"></i></a>
+                <a href="#" onclick="document.forms['signup-form'].submit();"
+                   class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow"></i></a>
+            </form>
         </div>
 
         <div class="nk-navigation rg-ic-stl">
             <a href="#" data-ma-action="nk-login-switch" data-ma-block="#l-login"><i
-                    class="notika-icon notika-right-arrow"></i> <span>Sign in</span></a>
-            <a href="" data-ma-action="nk-login-switch" data-ma-block="#l-forget-password"><i>?</i> <span>Forgot Password</span></a>
+                    class="notika-icon notika-right-arrow"></i> <span>ورود</span></a>
+            <a href="" data-ma-action="nk-login-switch" data-ma-block="#l-forget-password"><i>?</i> <span>فراموشی گذرواژه</span></a>
         </div>
     </div>
 
     <!-- Forgot Password -->
     <div class="nk-block" id="l-forget-password">
+        <h1>فراموشی رمز عبور</h1>
         <div class="nk-form">
-            <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur
-                commodo lorem fringilla enim feugiat commodo sed ac lacus.</p>
+            <p class="text-right">در صورتی که ثبت نام شما در سایت تایید شده است ولی نمی توانید به حساب کاربری خود دسترسی
+                داشته باشید، می توانید گذرواژه ی خود را از طریق ایمیل بازنشانی کنید.</p>
 
             <div class="input-group">
                 <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-mail"></i></span>
                 <div class="nk-int-st">
-                    <input type="text" class="form-control" placeholder="Email Address">
+                    <input type="text" class="form-control" placeholder="آدرس ایمیل">
                 </div>
             </div>
 
@@ -166,9 +204,9 @@
 
         <div class="nk-navigation nk-lg-ic rg-ic-stl">
             <a href="" data-ma-action="nk-login-switch" data-ma-block="#l-login"><i
-                    class="notika-icon notika-right-arrow"></i> <span>Sign in</span></a>
+                    class="notika-icon notika-right-arrow"></i> <span>ورود</span></a>
             <a href="" data-ma-action="nk-login-switch" data-ma-block="#l-register"><i
-                    class="notika-icon notika-plus-symbol"></i> <span>Register</span></a>
+                    class="notika-icon notika-plus-symbol"></i> <span>ثبت نام</span></a>
         </div>
     </div>
 </div>
