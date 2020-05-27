@@ -26,3 +26,24 @@
 .pForDiagram{
     font-size: 218px;
 }
+.PageTitle{
+    padding-bottom: 0.5%;
+    float: right;
+    font-size-adjust: 0.5;
+    font-size: larger;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 1%;
+    color: black;
+    margin-bottom: 2%;
+}
+.dateCss{
+    padding-bottom: 0.5%;
+    float: left;
+    font-size-adjust: 0.5;
+    font-size: larger;
+    text-align: left;
+    margin-top: 1%;
+    color: black;
+    margin-bottom: 2%;
+}
