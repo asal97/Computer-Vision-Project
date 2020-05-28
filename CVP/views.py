@@ -164,77 +164,114 @@ def get_this_month(taradod):
     return days
 
 
-def table(request):
-    print("weekday ", (datetime.datetime.now().weekday() + 2) % 7)
-    Owner_lists = Owner.objects.all()
-    all_Vehicle_list = Vehicle.objects.all()
-    Taradod_list = Taradod.objects.all()
+def get_this_year(taradod):
+    result = []
+    today = datetime.datetime.now()
+    if datetime.date(datetime.datetime.now().year, 3, 21) < today.date() < datetime.date(datetime.datetime.now().year,
+                                                                                         12, 31):
+        year_second = 1
+        year_first = 0
+    else:
+        year_first = -1
+        year_second = 0
 
-    days_of_month = get_this_month(Taradod_list)
+    if calendar.isleap(today.year):
+        #########################  Farvardin #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_first, 3, 20),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_first, 4, 19))
+        result.append(len(Month))
+        #########################  Ordibehesht #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_first, 4, 20),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_first, 5, 20))
+        result.append(len(Month))
+        #########################  Khordad #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_first, 5, 21),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_first, 6, 20))
+        result.append(len(Month))
+        #########################  Tir #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_first, 6, 21),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_first, 7, 21))
+        result.append(len(Month))
+        #########################  Mordad #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_first, 7, 22),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_first, 8, 21))
+        result.append(len(Month))
+        #########################  Shahrivar #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_first, 8, 22),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_first, 9, 21))
+        result.append(len(Month))
+        #########################  Mehr #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_first, 9, 22),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_first, 10, 21))
+        result.append(len(Month))
+        #########################  Aban #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_first, 10, 22),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_first, 11, 20))
+        result.append(len(Month))
+        #########################  Azar #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_first, 11, 21),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_first, 12, 20))
+        result.append(len(Month))
+        #########################  Dey #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_first, 12, 21),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_first, 12, 31))
+        mid_year = len(Month)
+
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_second, 1, 1),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_second, 1, 19))
+        mid_year += len(Month)
+        result.append(mid_year)
+        #########################  Bahman #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_second, 1, 20),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_second, 2, 18))
+        result.append(len(Month))
+        #########################  Esfand #################################
+        Month = taradod.filter(seen__gte=datetime.date(datetime.datetime.now().year + year_second, 2, 19),
+                               seen__lte=datetime.date(
+                                   datetime.datetime.now().year + year_second, 3, 20))
+        result.append(len(Month))
+
+    return result
+
+
+def table(request):
+    Taradod_list = Taradod.objects.all()
     Vehicle_list = []
-    today = get_total_today(Taradod_list)
+
     for vehicle in Vehicle.objects.all():
         Vehicle_list.append(vehicle.plate.get_status())
 
+    # getting data for the diagram for table page
+    today = get_total_today(Taradod_list)
+    last_hour = today[len(today)-1]
+    today = today[0:len(today)-1]
+    print("last ",last_hour)
+
     week = get_week_day(Taradod_list)
+    last_day = week[len(week) - 1]
+    week = week[0:len(week) - 1]
 
-    # Month = Taradod_list.filter(seen__gte=datetime.date(datetime.datetime.now().year, 5, 21),
-    #                             seen__lte=datetime.date(datetime.datetime.now().year, 6, 20))
-    # lastCar = Month[0]
-    # days = []
-    # date = lastCar.seen.date() - datetime.date(datetime.datetime.now().year, 5, 21)
-    # print("kabise ast", calendar.isleap(datetime.datetime.now().year))
-    # for i in range(0, date.days):
-    #     days.append(0)
-    # count = 0
-    # for car in Month:
-    #     print("car ", car)
-    #     if car.seen.day == lastCar.seen.day:
-    #         count += 1
-    #         print("count! ", count)
-    #     else:
-    #         print("count dar else ", count)
-    #         days.append(count)
-    #         count = 0
-    # days.append(count)
-    #
-    # if Month[len(Month) - 1].seen.date() < datetime.date(datetime.datetime.now().year, 6, 20):
-    #     for i in range(0,
-    #                    (datetime.date(datetime.datetime.now().year, 6, 20) - Month[len(Month) - 1].seen.date()).days):
-    #         days.append(0)
-    #
-    # print("akharish ", Month[len(Month) - 1])
-    #
-    # print(days)
-    # print("tule mahe", len(days))
-    # print("ekhh ", date.days)
-    # print("ekh ", lastCar.seen.date() - datetime.date(datetime.datetime.now().year, 5, 21))
-    # print("day ", lastCar.seen.day)
-    # print("month ", Month)
+    days_of_month = get_this_month(Taradod_list)
+    last_day_month = days_of_month[len(days_of_month) - 1]
+    days_of_month = days_of_month[0:len(days_of_month) - 1]
 
-    # qs = Taradod_list.filter(
-    #     seen__year=datetime.datetime.now().year,
-    #     seen__month=datetime.datetime.now().month
-    # ).annotate(
-    #     day=ExtractDay('seen'),
-    # ).values(
-    #     'day'
-    # ).annotate(
-    #     n=Count('pk')
-    # ).order_by('day')
-    #
-    # print("days ", qs)
-    #
-    # data = Counter({d['day']: d['n'] for d in qs})
-    #
-    # __, ds = monthrange(datetime.datetime.now().year, datetime.datetime.now().month)
-    # print("data ", ds)
-    # result = [data[i] for i in range(1, ds + 1)]
-    # print("day result ", result)
-    # print("len day", len(result))
+    months_of_year = get_this_year(Taradod_list)
+    last_month = months_of_year[len(months_of_year) - 1]
+    months_of_year = months_of_year[0:len(months_of_year) - 1]
 
-    # Taradod_list = Taradod_list.filter(seen__week_day=((datetime.datetime.today().weekday()) + 2) % 7)
-    print("today " + str(datetime.datetime.today().weekday()))
+    # checking whether the car is in our registered data
     for taradod in Taradod_list:
         taradod.seen = jdatetime.datetime.fromgregorian(day=taradod.seen.day, month=taradod.seen.month.numerator,
                                                         year=taradod.seen.year, hour=taradod.seen.astimezone().hour,
@@ -246,14 +283,24 @@ def table(request):
             taradod.approved = True
 
     context = {
+
+        'monthsCount': np.sum(months_of_year)+ last_month,
+        'months': months_of_year,
+        'last_month':last_month,
+
         'days': days_of_month,
-        'daysCount': np.sum(days_of_month),
-        'weekCount': np.sum(week),
+        'daysCount': np.sum(days_of_month) + last_day_month,
+        'last_day_month': last_day_month,
+
+
+        'weekCount': np.sum(week) + last_day,
         'week': week,
-        'todayCount': np.sum(today),
+        'last_day': last_day,
+
+        'todayCount': np.sum(today) + last_hour,
         'today': today,
+        'last_hour': last_hour,
+
         'Taradod_list': Taradod_list,
-        'Vehicle_list': all_Vehicle_list,
-        'Owner_list': Owner_lists
     }
     return render(request, 'table.html', context)
