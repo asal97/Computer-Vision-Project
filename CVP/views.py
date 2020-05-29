@@ -75,71 +75,70 @@ def get_week_day(taradod):
 
 def get_this_month(taradod):
     today = datetime.datetime.now()
-    if calendar.isleap(today.year):
-        if datetime.date(datetime.datetime.now().year, 3, 20) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 4, 19):
-            start = datetime.date(datetime.datetime.now().year, 3, 20)
-            end = datetime.date(datetime.datetime.now().year, 4, 19)
+    if datetime.date(datetime.datetime.now().year, 3, 20) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 4, 19):
+        start = datetime.date(datetime.datetime.now().year, 3, 20)
+        end = datetime.date(datetime.datetime.now().year, 4, 19)
 
-        elif datetime.date(datetime.datetime.now().year, 4, 20) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 5, 20):
-            start = datetime.date(datetime.datetime.now().year, 4, 20)
-            end = datetime.date(datetime.datetime.now().year, 5, 19)
+    elif datetime.date(datetime.datetime.now().year, 4, 20) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 5, 20):
+        start = datetime.date(datetime.datetime.now().year, 4, 20)
+        end = datetime.date(datetime.datetime.now().year, 5, 19)
 
-        elif datetime.date(datetime.datetime.now().year, 5, 21) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 6, 20):
-            start = datetime.date(datetime.datetime.now().year, 5, 21)
-            end = datetime.date(datetime.datetime.now().year, 6, 20)
+    elif datetime.date(datetime.datetime.now().year, 5, 21) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 6, 20):
+        start = datetime.date(datetime.datetime.now().year, 5, 21)
+        end = datetime.date(datetime.datetime.now().year, 6, 20)
 
-        elif datetime.date(datetime.datetime.now().year, 6, 21) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 7, 21):
-            start = datetime.date(datetime.datetime.now().year, 6, 21)
-            end = datetime.date(datetime.datetime.now().year, 7, 21)
+    elif datetime.date(datetime.datetime.now().year, 6, 21) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 7, 21):
+        start = datetime.date(datetime.datetime.now().year, 6, 21)
+        end = datetime.date(datetime.datetime.now().year, 7, 21)
 
-        elif datetime.date(datetime.datetime.now().year, 7, 22) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 8, 21):
-            start = datetime.date(datetime.datetime.now().year, 7, 22)
-            end = datetime.date(datetime.datetime.now().year, 8, 21)
+    elif datetime.date(datetime.datetime.now().year, 7, 22) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 8, 21):
+        start = datetime.date(datetime.datetime.now().year, 7, 22)
+        end = datetime.date(datetime.datetime.now().year, 8, 21)
 
-        elif datetime.date(datetime.datetime.now().year, 8, 22) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 9, 21):
-            start = datetime.date(datetime.datetime.now().year, 8, 22)
-            end = datetime.date(datetime.datetime.now().year, 9, 21)
+    elif datetime.date(datetime.datetime.now().year, 8, 22) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 9, 21):
+        start = datetime.date(datetime.datetime.now().year, 8, 22)
+        end = datetime.date(datetime.datetime.now().year, 9, 21)
 
-        elif datetime.date(datetime.datetime.now().year, 9, 22) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 10, 21):
-            start = datetime.date(datetime.datetime.now().year, 9, 22)
-            end = datetime.date(datetime.datetime.now().year, 10, 21)
+    elif datetime.date(datetime.datetime.now().year, 9, 22) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 10, 21):
+        start = datetime.date(datetime.datetime.now().year, 9, 22)
+        end = datetime.date(datetime.datetime.now().year, 10, 21)
 
-        elif datetime.date(datetime.datetime.now().year, 10, 22) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 11, 20):
-            start = datetime.date(datetime.datetime.now().year, 10, 22)
-            end = datetime.date(datetime.datetime.now().year, 11, 20)
+    elif datetime.date(datetime.datetime.now().year, 10, 22) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 11, 20):
+        start = datetime.date(datetime.datetime.now().year, 10, 22)
+        end = datetime.date(datetime.datetime.now().year, 11, 20)
 
-        elif datetime.date(datetime.datetime.now().year, 11, 21) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 12, 20):
-            start = datetime.date(datetime.datetime.now().year, 11, 21)
-            end = datetime.date(datetime.datetime.now().year, 12, 20)
+    elif datetime.date(datetime.datetime.now().year, 11, 21) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 12, 20):
+        start = datetime.date(datetime.datetime.now().year, 11, 21)
+        end = datetime.date(datetime.datetime.now().year, 12, 20)
 
-        elif datetime.date(datetime.datetime.now().year, 12, 21) <= today.date() <= datetime.date(
-                datetime.datetime.now().year + 1, 1, 19):
-            start = datetime.date(datetime.datetime.now().year, 12, 21)
-            end = datetime.date(datetime.datetime.now().year + 1, 1, 19)
+    elif datetime.date(datetime.datetime.now().year, 12, 21) <= today.date() <= datetime.date(
+            datetime.datetime.now().year + 1, 1, 19):
+        start = datetime.date(datetime.datetime.now().year, 12, 21)
+        end = datetime.date(datetime.datetime.now().year + 1, 1, 19)
 
-        elif datetime.date(datetime.datetime.now().year - 1, 12, 21) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 1, 19):
-            start = datetime.date(datetime.datetime.now().year - 1, 12, 21)
-            end = datetime.date(datetime.datetime.now().year, 1, 19)
+    elif datetime.date(datetime.datetime.now().year - 1, 12, 21) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 1, 19):
+        start = datetime.date(datetime.datetime.now().year - 1, 12, 21)
+        end = datetime.date(datetime.datetime.now().year, 1, 19)
 
-        elif datetime.date(datetime.datetime.now().year, 1, 20) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 2, 18):
-            start = datetime.date(datetime.datetime.now().year, 1, 20)
-            end = datetime.date(datetime.datetime.now().year, 2, 18)
+    elif datetime.date(datetime.datetime.now().year, 1, 20) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 2, 18):
+        start = datetime.date(datetime.datetime.now().year, 1, 20)
+        end = datetime.date(datetime.datetime.now().year, 2, 18)
 
-        elif datetime.date(datetime.datetime.now().year, 2, 19) <= today.date() <= datetime.date(
-                datetime.datetime.now().year, 3, 20):
-            start = datetime.date(datetime.datetime.now().year, 11, 21)
-            end = datetime.date(datetime.datetime.now().year, 12, 20)
+    elif datetime.date(datetime.datetime.now().year, 2, 19) <= today.date() <= datetime.date(
+            datetime.datetime.now().year, 3, 20):
+        start = datetime.date(datetime.datetime.now().year, 11, 21)
+        end = datetime.date(datetime.datetime.now().year, 12, 20)
 
     Month = taradod.filter(seen__gte=start,
                            seen__lte=end)
