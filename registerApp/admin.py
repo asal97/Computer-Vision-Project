@@ -15,7 +15,8 @@ class OwnerAdmin(admin.ModelAdmin):
 
 
 class VehicleAdmin(admin.ModelAdmin):
-    list_display = ('owner', 'plate', 'img', 'color', 'type')
+    list_filter = ('active',)
+    list_display = ('owner', 'plate', 'img', 'color', 'type','created','active')
 
 
 class PlateAdmin(admin.ModelAdmin):
