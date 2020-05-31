@@ -96,11 +96,10 @@
                                                <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                 <tr>
-                                        <th class="table_head">پلاک</th>
-                                        <th>رنگ خودرو</th>
-                                        <th>مدل خودرو</th>
+                                       <th>پلاک</th>
                                         <th>مجوز عبور </th>
-                                        <th>تاریخ</th>
+                                    <th>ساعت عبور</th>
+                                        <th>تاریخ عبور</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -109,8 +108,7 @@
                                 <tr>
 
                                     <td class="persianTable">{{ data.plate }}</td>
-                                    <td class="persianTable">{{ data.color }}</td>
-                                    <td class="persianTable">{{ data.type }}</td>
+
                                     {% if data.approved == True %}
                                         <td>
                                             <button  class=" disabled  button-icon-btn btn btn-success success-icon-notika btn-reco-mg "><i class="notika-icon notika-checked"></i></button></td>
@@ -120,7 +118,9 @@
                                         <td><button class="disabled  button-icon-btn btn btn-danger danger-icon-notika btn-reco-mg"><i class="notika-icon notika-close"></i></button></td>
                                     {% endif %}
 
-                                    <td class="persianTable">{{data.seen}}</td>
+                                  <td class="persianTable">{{data.seen.hour}}:{{ data.seen.minute }}:{{ data.seen.second }}</td>
+                                    <td class="persianTable">{{data.seen.date}}</td>
+
 
                                 </tr>
                                 {% endfor %}

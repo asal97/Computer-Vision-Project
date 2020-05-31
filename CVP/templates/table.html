@@ -63,35 +63,35 @@
     <br>
     <!-- End Status area-->
     <!-- Breadcomb area Start-->
-    <div class="breadcomb-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcomb-list">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="breadcomb-wp">
-                                    <div class="breadcomb-icon">
-                                        <i class="notika-icon notika-windows"></i>
-                                    </div>
-                                    <div class="breadcomb-ctn">
-                                        <h2>Data Table</h2>
-                                        <p>You can download the data excel from here </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                                <div class="breadcomb-report">
-                                    <button data-toggle="tooltip" data-placement="left" title="Download Report"
-                                            class="btn"><i class="notika-icon notika-sent"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{#    <div class="breadcomb-area">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                    <div class="breadcomb-list">#}
+{#                        <div class="row">#}
+{#                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">#}
+{#                                <div class="breadcomb-wp">#}
+{#                                    <div class="breadcomb-icon">#}
+{#                                        <i class="notika-icon notika-windows"></i>#}
+{#                                    </div>#}
+{#                                    <div class="breadcomb-ctn">#}
+{#                                        <h2>Data Table</h2>#}
+{#                                        <p>You can download the data excel from here </p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">#}
+{#                                <div class="breadcomb-report">#}
+{#                                    <button data-toggle="tooltip" data-placement="left" title="Download Report"#}
+{#                                            class="btn"><i class="notika-icon notika-sent"></i></button>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
     <!-- Breadcomb area End-->
     <!-- Data Table area Start-->
     <div class="data-table-area">
@@ -108,10 +108,9 @@
                                 <thead>
                                 <tr>
                                         <th>پلاک</th>
-                                        <th>رنگ خودرو</th>
-                                        <th>مدل خودرو</th>
                                         <th>مجوز عبور </th>
-                                        <th>تاریخ</th>
+                                    <th>ساعت عبور</th>
+                                        <th>تاریخ عبور</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -120,8 +119,7 @@
                                 <tr>
 
                                     <td class="persianTable">{{ data.plate }}</td>
-                                    <td class="persianTable">{{ data.color }}</td>
-                                    <td class="persianTable">{{ data.type }}</td>
+
                                     {% if data.approved == True %}
                                         <td>
                                             <button  class=" disabled  button-icon-btn btn btn-success success-icon-notika btn-reco-mg "><i class="notika-icon notika-checked"></i></button></td>
@@ -131,7 +129,8 @@
                                         <td><button class="disabled  button-icon-btn btn btn-danger danger-icon-notika btn-reco-mg"><i class="notika-icon notika-close"></i></button></td>
                                     {% endif %}
 
-                                    <td class="persianTable">{{data.seen}}</td>
+                                    <td class="persianTable">{{data.seen.hour}}:{{ data.seen.minute }}:{{ data.seen.second }}</td>
+                                    <td class="persianTable">{{data.seen.date}}</td>
 
                                 </tr>
                                 {% endfor %}
