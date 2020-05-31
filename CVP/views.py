@@ -16,7 +16,8 @@ def index(request):
     Vehicle_list = []
 
     for vehicle in Vehicle.objects.all():
-        Vehicle_list.append(vehicle.plate.get_status())
+        if vehicle.active:
+            Vehicle_list.append(vehicle.plate.get_status())
 
     Taradod_list = Taradod_list.filter(seen__week_day=((datetime.datetime.today().weekday()) + 2) % 7)
 
@@ -80,7 +81,9 @@ def table(request):
     Vehicle_list = []
     today = get_total_today(Taradod_list)
     for vehicle in Vehicle.objects.all():
-        Vehicle_list.append(vehicle.plate.get_status())
+        if vehicle.active:
+            Vehicle_list.append(vehicle.plate.get_status())
+
 
     week = get_week_day(Taradod_list)
 
