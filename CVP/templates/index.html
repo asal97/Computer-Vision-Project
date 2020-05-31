@@ -109,13 +109,15 @@
 
                                     <td class="persianTable">{{ data.plate }}</td>
 
-                                    {% if data.approved == True %}
+                                     {% if data.approved == True %}
                                         <td>
-                                            <button  class=" disabled  button-icon-btn btn btn-success success-icon-notika btn-reco-mg "><i class="notika-icon notika-checked"></i></button></td>
+                                            <button  class="disabled  button-icon-btn btn btn-success success-icon-notika btn-reco-mg "><i class="notika-icon notika-checked"></i></button>
+                                        <p class="hidden">True</p></td>
                                     {% endif%}
 
                                     {% if data.approved == False %}
-                                        <td><button class="disabled  button-icon-btn btn btn-danger danger-icon-notika btn-reco-mg"><i class="notika-icon notika-close"></i></button></td>
+                                        <td><button class="disabled  button-icon-btn btn btn-danger danger-icon-notika btn-reco-mg"><i class="notika-icon notika-close"></i></button>
+                                         <p class="hidden">False</p></td>
                                     {% endif %}
 
                                   <td class="persianTable">{{data.seen.hour}}:{{ data.seen.minute }}:{{ data.seen.second }}</td>
