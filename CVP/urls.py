@@ -28,6 +28,7 @@ urlpatterns = [
 
     url(r'^register/', include('registerApp.urls')),
     url(r'^account/', include('userApp.urls')),
+    url(r'^traffic/', include('taradodApp.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
