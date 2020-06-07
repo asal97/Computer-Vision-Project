@@ -5,27 +5,26 @@
 {% block content %}
 
     <!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
-            href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
     <!-- Start Sale Statistic area-->
     <div class="sale-statistic-area">
         <div class="container">
             <div class="row">
-                {#                     <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">#}
-                {#                    <div class="sale-statistic-inner notika-shadow mg-tb-30">#}
-                {#                        <div class="curved-inner-pro">#}
-                {#                            <div class="curved-ctn">#}
-                {#                                <h2>Sales Statistics</h2>#}
-                {#                                <p>Vestibulum purus quam scelerisque, mollis nonummy metus</p>#}
-                {#                            </div>#}
-                {#                        </div>#}
-                {#                        <div id="curved-line-chart" class="flot-chart-sts flot-chart">#}
-                {#                            <video>#}
-                {#                            <source src="https://as7.cdn.asset.aparat.com/aparat-video/0c17ad339218a4cdfdd20037f63508b02665200-224p.mp4" type="video/mp4"></video>#}
-                {#                        </div>#}
-                {#                    </div>#}
-                {#                </div>#}
+{#                     <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">#}
+{#                    <div class="sale-statistic-inner notika-shadow mg-tb-30">#}
+{#                        <div class="curved-inner-pro">#}
+{#                            <div class="curved-ctn">#}
+{#                                <h2>Sales Statistics</h2>#}
+{#                                <p>Vestibulum purus quam scelerisque, mollis nonummy metus</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div id="curved-line-chart" class="flot-chart-sts flot-chart">#}
+{#                            <video>#}
+{#                            <source src="https://as7.cdn.asset.aparat.com/aparat-video/0c17ad339218a4cdfdd20037f63508b02665200-224p.mp4" type="video/mp4"></video>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
                 <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
                     <div class="mg-tb-30">
                         <div class="embed-responsive embed-responsive-16by9 capture">
@@ -84,7 +83,7 @@
     </div>
     <!-- End Sale Statistic area-->
 
-    <!-- Data Table area Start-->
+   <!-- Data Table area Start-->
     <div class="data-table-area">
         <div class="container">
             <div class="row">
@@ -98,11 +97,10 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th class="table_head">پلاک</th>
-                                    <th>رنگ خودرو</th>
-                                    <th>مدل خودرو</th>
-                                    <th>مجوز عبور</th>
-                                    <th>تاریخ</th>
+                                       <th>پلاک</th>
+                                        <th>مجوز عبور </th>
+                                    <th>ساعت عبور</th>
+                                        <th>تاریخ عبور</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -111,24 +109,22 @@
                                     <tr style="cursor: pointer;"
                                         onclick="window.location='{{ data.get_absolute_url }}';">
 
-                                        <td class="persianTable">{{ data.plate }}</td>
-                                        <td class="persianTable">{{ data.color }}</td>
-                                        <td class="persianTable">{{ data.type }}</td>
-                                        {% if data.approved == True %}
-                                            <td>
-                                                <button class=" disabled  button-icon-btn btn btn-success success-icon-notika btn-reco-mg ">
-                                                    <i class="notika-icon notika-checked"></i></button>
-                                            </td>
-                                        {% endif %}
+                                    <td class="persianTable">{{ data.plate }}</td>
 
-                                        {% if data.approved == False %}
-                                            <td>
-                                                <button class="disabled  button-icon-btn btn btn-danger danger-icon-notika btn-reco-mg">
-                                                    <i class="notika-icon notika-close"></i></button>
-                                            </td>
-                                        {% endif %}
+                                     {% if data.approved == True %}
+                                        <td>
+                                            <button  class="disabled  button-icon-btn btn btn-success success-icon-notika btn-reco-mg "><i class="notika-icon notika-checked"></i></button>
+                                        <p class="hidden">True</p></td>
+                                    {% endif%}
 
-                                        <td class="persianTable">{{ data.seen }}</td>
+                                    {% if data.approved == False %}
+                                        <td><button class="disabled  button-icon-btn btn btn-danger danger-icon-notika btn-reco-mg"><i class="notika-icon notika-close"></i></button>
+                                         <p class="hidden">False</p></td>
+                                    {% endif %}
+
+                                  <td class="persianTable">{{data.seen.hour}}:{{ data.seen.minute }}:{{ data.seen.second }}</td>
+                                    <td class="persianTable">{{data.seen.date}}</td>
+
 
                                     </tr>
                                 {% endfor %}

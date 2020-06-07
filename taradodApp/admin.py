@@ -9,7 +9,7 @@ from .models import Taradod
 class TaradodAdmin(admin.ModelAdmin):
     ordering = ['seen']
     list_display_links = ['plate']
-    list_display = ('plate', 'color', 'type', 'seen', 'approved')
+    list_display = ('plate','img', 'seen', 'approved')
     list_filter = ('approved', 'seen')
 
 

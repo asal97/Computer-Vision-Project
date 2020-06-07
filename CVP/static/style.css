@@ -2706,6 +2706,7 @@ hr {
 }
 .dataTables_wrapper .dataTables_filter {
     width: 40%;
+    direction:rtl;
 }
 .dataTables_wrapper .dataTables_filter input, .dataTables_wrapper .dataTables_filter label {
     width: 100%;
@@ -2715,12 +2716,12 @@ hr {
     font-family: 'notika-icon';
     position: absolute;
     font-size: 14px;
-    right: 0px;
+    right: 5px;
     top: 8px;
 }
 .dataTables_wrapper .dataTables_filter input {
     margin: 0!important;
-    padding: 0px 0px 0px 10px;
+    padding: 0px 10px 0px 10px;
 }
 .dataTables_filter label {
     position: relative;

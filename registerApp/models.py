@@ -91,6 +91,8 @@ class Owner(models.Model):
 
 
 class Vehicle(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
     plate = models.OneToOneField(Plate, on_delete=models.CASCADE, blank=True)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='carPic', blank=True)
