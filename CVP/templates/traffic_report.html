@@ -1,3 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}جداول مربوط به تردد وسایل نقلیه{% endblock %}
+
+{% block content %}
+
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
+            href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Data Table area Start-->
+    <div class="data-table-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="data-table-list">
+                        <div class="basic-tb-hd">
+                            <h1 class="basic_table">{{ this_vehicle.plate }}</h1>
+                        </div>
+                        <h2 style="text-align: right">مشخصات</h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                        <h3>{{ this_vehicle.owner.first_name }} {{ this_vehicle.owner.family_name }}</h3>
+
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <span>عکس مالک</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                        <h3>{{ this_vehicle.type }} {{ this_vehicle.color }}</h3>
+
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <span>عکس خودرو</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <h2 style="text-align: right">جدول ترددهای پیشین</h2>
+                            <table id="data-table-basic" class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>تاریخ عبور</th>
+                                    <th>ساعت عبور</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for data in taradods %}
+                                    <tr style="cursor: pointer"
+                                        onclick="window.location='{{ data.get_absolute_url }}';">
+
+
+                                        <td class="persianTable">{{ data.seen.date }}</td>
+                                        <td class="persianTable">{{ data.seen.hour }}:{{ data.seen.minute }}:{{ data.seen.second }}</td>
+
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Start Status area -->
+
+    <br>
+    <!-- End Status area-->
+
+
+{% endblock content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>

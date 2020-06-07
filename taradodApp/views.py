@@ -1,3 +1,4 @@
+import jdatetime
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import Taradod
@@ -12,6 +13,14 @@ ALPHA_MAP = {x: y + 1 for y, x in enumerate(
 def traffic_report(request, traffic_id):
     this_traffic = get_object_or_404(Taradod, id=traffic_id)
     plate_split = this_traffic.plate.split('-')
+    taradods = Taradod.objects.filter(
+        Q(plate=this_traffic.plate)
+    )
+    for taradod in taradods:
+        taradod.seen = jdatetime.datetime.fromgregorian(day=taradod.seen.day, month=taradod.seen.month.numerator,
+                                                        year=taradod.seen.year, hour=taradod.seen.astimezone().hour,
+                                                        minute=taradod.seen.astimezone().minute,
+                                                        second=taradod.seen.astimezone().second)
     if len(plate_split) == 3:  # پلاک انزلی
         vehicle = Vehicle.objects.filter(
             (Q(plate__plate_type=2) & Q(plate__firstNum=int(plate_split[2])) & Q(plate__secondNum=int(plate_split[1])))
@@ -23,6 +32,7 @@ def traffic_report(request, traffic_id):
         )
     context = {
         'this_traffic': this_traffic,
-        'this_vehicle': vehicle[0]
+        'this_vehicle': vehicle[0],
+        'taradods': taradods
     }
     return render(request, 'traffic_report.html', context)
