@@ -10,9 +10,20 @@
 }
 .capture{
 
-    border: 7px solid  #00c292;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 4px 4px 14px #000;
+    -webkit-box-shadow: 4px 4px 14px #000;
+    box-shadow: 4px 4px 14px #000;
+    border-top: #00c292 4px solid;
+    border-right: #00c292 2px solid;
+    border-left: #00c292 2px solid;
+    border-bottom: #00c292 4px solid;
+    /*border: 7px solid  #00c292;*/
 
 }
+
 .notShadow{
     box-shadow: none;
 }
@@ -25,4 +36,25 @@
 }
 .pForDiagram{
     font-size: 218px;
+}
+.PageTitle{
+    padding-bottom: 0.5%;
+    float: right;
+    font-size-adjust: 0.5;
+    font-size: larger;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 1%;
+    color: black;
+    margin-bottom: 2%;
+}
+.dateCss{
+    padding-bottom: 0.5%;
+    float: left;
+    font-size-adjust: 0.5;
+    font-size: larger;
+    text-align: left;
+    margin-top: 1%;
+    color: black;
+    margin-bottom: 2%;
 }

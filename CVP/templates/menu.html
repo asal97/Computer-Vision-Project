@@ -24,12 +24,11 @@
                                     <li><a href="{% url 'table' %}">گزارشات</a></li>
                                 </ul>
                             </li>
-                            <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">تنظیمات</a>
 
                             </li>
                             <li><a data-toggle="collapse" data-target="#Pagemob" href="#">ثبت نام</a>
                                 <ul id="Pagemob" class="collapse dropdown-header-top">
-                                    <li><a href="contact.html">خودرو مجاز</a>
+                                    <li><a href="{% url 'register' %}">خودرو مجاز</a>
                                     </li>
                                     <li><a href="{% url 'login' %}">کاربر سیستمی</a>
                                     </li>
@@ -52,8 +51,6 @@
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                     <li><a data-toggle="tab" href="#Forms"><i class="notika-icon notika-form"></i>نظارت</a>
                     </li>
-                    <li><a data-toggle="tab" href="#Appviews"><i class="notika-icon notika-app"></i>تنظیمات</a>
-                    </li>
                     <li><a data-toggle="tab" href="#Page"><i class="notika-icon notika-support"></i>ثبت نام</a>
                     </li>
                 </ul>
@@ -74,7 +71,7 @@
                     </div>
                     <div id="Page" class="tab-pane notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
-                            <li><a href="contact.html">خودرو مجاز</a>
+                            <li><a href="{% url 'register' %}">خودرو مجاز</a>
                             </li>
                             <li><a href="{% url 'login' %}">کاربر سیستمی</a>
                             </li>
