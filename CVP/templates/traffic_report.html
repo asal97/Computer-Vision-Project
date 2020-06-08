@@ -17,32 +17,46 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
                         <div class="basic-tb-hd">
-                            <h1 class="basic_table">{{ this_vehicle.plate }}</h1>
+                            <h1 class="basic_table" style="text-align: center;">{{ this_vehicle.plate }}</h1>
                         </div>
-                        <h2 style="text-align: right">مشخصات</h2>
 
                         <div class="row">
 
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: center;">
+                                <h2>مشخصات مالک</h2>
+                                <hr>
                                 <div class="col-lg-8 col-md-8 col-sm-8">
-                                        <h3>{{ this_vehicle.owner.first_name }} {{ this_vehicle.owner.family_name }}</h3>
-
+                                    <h3>{{ this_vehicle.owner.first_name }} {{ this_vehicle.owner.family_name }} <span>
+                                        <i class="notika-icon notika-support"></i></span></h3>
+                                    {#                                    <h3>amirhossein</h3>#}
+                                    <h4>({{ this_vehicle.owner.description }})</h4>
+                                    <h4>شماره تماس {{ this_vehicle.owner.phone }} <span>
+                                        <i class="notika-icon notika-phone"></i></span></h4>
+                                    <h4>کد ملی {{ this_vehicle.owner.phone }} <span>
+                                        <i class="notika-icon notika-credit-card"></i></span></h4>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <span>عکس مالک</span>
+                                    <h4>تصویر مالک <span>
+                                        <i class="notika-icon notika-picture"></i></span></h4>
+                                    <img src="{{ this_vehicle.owner.img.url }}" alt="تصویر مالک">
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="col-lg-8 col-md-8 col-sm-8">
-                                        <h3>{{ this_vehicle.type }} {{ this_vehicle.color }}</h3>
 
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: center">
+                                <h2>مشخصات خودرو</h2>
+                                <hr>
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <h3>{{ this_vehicle.type }} {{ this_vehicle.color }}</h3>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <span>عکس خودرو</span>
+                                    <h4>تصویر خودرو <span>
+                                        <i class="notika-icon notika-picture"></i></span></h4>
+                                    <img src="{{ this_vehicle.img.url }}" alt="تصویر خودرو">
                                 </div>
+
                             </div>
                         </div>
-
+                        <hr>
                         <div class="table-responsive">
                             <h2 style="text-align: right">جدول ترددهای پیشین</h2>
                             <table id="data-table-basic" class="table table-striped">
@@ -55,8 +69,7 @@
                                 <tbody>
 
                                 {% for data in taradods %}
-                                    <tr style="cursor: pointer"
-                                        onclick="window.location='{{ data.get_absolute_url }}';">
+                                    <tr>
 
 
                                         <td class="persianTable">{{ data.seen.date }}</td>
