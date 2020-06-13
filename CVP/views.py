@@ -14,14 +14,12 @@ from collections import Counter
 
 
 def index(request):
-    Taradod_list = Taradod.objects.all()
+    Taradod_list = Taradod.objects.filter(seen__gte=datetime.date.today())
     Vehicle_list = []
 
     for vehicle in Vehicle.objects.all():
         if vehicle.active:
             Vehicle_list.append(vehicle.plate.get_status())
-
-    Taradod_list = Taradod_list.filter(seen__week_day=((datetime.datetime.today().weekday()) + 2) % 7)
 
     for taradod in Taradod_list:
         taradod.seen = jdatetime.datetime.fromgregorian(day=taradod.seen.day, month=taradod.seen.month.numerator,
@@ -286,7 +284,7 @@ def table(request):
         Q(active=True)
     )
     for vehicle in Vehicle_list:
-            vehicle_status.append(vehicle.plate.get_status())
+        vehicle_status.append(vehicle.plate.get_status())
 
 
     # getting data for the diagram for table page
