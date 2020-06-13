@@ -67,17 +67,36 @@ def get_total_today(taradod):
 
 
 def get_week_day(taradod):
-    today = datetime.datetime.now()
-    current_week_num = today.isocalendar()[1]
-    week = taradod.annotate(weekday=ExtractWeekDay('seen')).values('weekday').annotate(count=Count('id')).values(
-        'weekday', 'count')
-    print("week",week)
-    data = Counter({d['weekday']: d['count'] for d in week})
-    print(data," data")
-    result = [data[i] for i in range(0, 7)]
-    print("week result ", result)
+    today_num = ((datetime.datetime.today().weekday()) + 2) % 7
+    start = today_num - 0
+    days=[]
+    for i in range(0, start):
+        days.append(0)
+    start = datetime.datetime.today().date() - datetime.timedelta(days=start)
+    endCount = 6 - today_num
+    end = datetime.datetime.today().date() + datetime.timedelta(days=endCount)
+    week = taradod.objects.filter(seen__gte=start,
+                                  seen__lte=end)
 
-    return result
+    firstCar = week[0]
+    date = firstCar.seen.date() - start
+
+    count = 0
+    for car in week:
+        if car.seen.day == firstCar.seen.day:
+            count += 1
+        else:
+            days.append(count)
+            dayDif = car.seen.day - firstCar.seen.day
+            for i in range(0, dayDif - 1):
+                days.append(0)
+            firstCar = car
+            count = 1
+    days.append(count)
+    for i in range(0, endCount):
+        days.append(0)
+
+    return days
 
 
 def get_this_month(taradod):
@@ -276,7 +295,7 @@ def table(request):
     today = today[0:len(today)-1]
 
     # getting days of week
-    week = get_week_day(Taradod_list)
+    week = get_week_day(Taradod)
     last_day = week[len(week) - 1]
     print("last day",last_day)
     week = week[0:len(week) - 1]
