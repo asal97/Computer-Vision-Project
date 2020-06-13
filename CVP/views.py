@@ -8,6 +8,7 @@ from django.db.models import Count
 import calendar
 from django.db.models.functions import ExtractDay, ExtractHour, ExtractWeekDay
 from calendar import monthrange
+from django.db.models import Q
 
 from collections import Counter
 
@@ -28,9 +29,11 @@ def index(request):
                                                         minute=taradod.seen.astimezone().minute,
                                                         second=taradod.seen.astimezone().second
                                                         )
-        print("nmidunam! ", taradod.seen.time)
+
         if taradod.plate in Vehicle_list:
-            taradod.approved = True
+            t = Taradod.objects.get(id=taradod.id)
+            t.approved = True
+            t.save()
 
     context = {
         'Taradod_list': Taradod_list,
@@ -64,9 +67,13 @@ def get_total_today(taradod):
 
 
 def get_week_day(taradod):
+    today = datetime.datetime.now()
+    current_week_num = today.isocalendar()[1]
     week = taradod.annotate(weekday=ExtractWeekDay('seen')).values('weekday').annotate(count=Count('id')).values(
         'weekday', 'count')
+    print("week",week)
     data = Counter({d['weekday']: d['count'] for d in week})
+    print(data," data")
     result = [data[i] for i in range(0, 7)]
     print("week result ", result)
 
@@ -142,24 +149,32 @@ def get_this_month(taradod):
 
     Month = taradod.filter(seen__gte=start,
                            seen__lte=end)
-    lastCar = Month[0]
+    firstCar = Month[0]
     days = []
-    date = lastCar.seen.date() - datetime.date(datetime.datetime.now().year, 5, 21)
+    date = firstCar.seen.date() - start
     for i in range(0, date.days):
         days.append(0)
     count = 0
     for car in Month:
-        if car.seen.day == lastCar.seen.day:
+        print("car date ",car.seen.day)
+        if car.seen.day == firstCar.seen.day:
             count += 1
+            print("in if count:",count)
         else:
             days.append(count)
-            count = 0
-    days.append(count)
+            dayDif = car.seen.day - firstCar.seen.day
+            print(car.seen.day ,firstCar.seen.day," dif ",dayDif)
+            for i in range(0, dayDif-1):
+                days.append(0)
+            firstCar = car
+            count = 1
 
+    days.append(count)
     if Month[len(Month) - 1].seen.date() < end:
         for i in range(0,
                        (end - Month[len(Month) - 1].seen.date()).days):
             days.append(0)
+
     return days
 
 
@@ -246,22 +261,24 @@ def get_this_year(taradod):
 
 
 def table(request):
+    vehicle_status=[]
     Taradod_list = Taradod.objects.all()
-    Vehicle_list = []
-
-    for vehicle in Vehicle.objects.all():
-        if vehicle.active:
-            Vehicle_list.append(vehicle.plate.get_status())
+    Vehicle_list = Vehicle.objects.filter(
+        Q(active=True)
+    )
+    for vehicle in Vehicle_list:
+            vehicle_status.append(vehicle.plate.get_status())
 
 
     # getting data for the diagram for table page
     today = get_total_today(Taradod_list)
     last_hour = today[len(today)-1]
     today = today[0:len(today)-1]
-    print("last ",last_hour)
 
+    # getting days of week
     week = get_week_day(Taradod_list)
     last_day = week[len(week) - 1]
+    print("last day",last_day)
     week = week[0:len(week) - 1]
 
     days_of_month = get_this_month(Taradod_list)
@@ -279,9 +296,12 @@ def table(request):
                                                         minute=taradod.seen.astimezone().minute,
                                                         second=taradod.seen.astimezone().second
                                                         )
-        print("nmidunam! ", taradod.seen.time)
         if taradod.plate in Vehicle_list:
-            taradod.approved = True
+            t = Taradod.objects.get(id=taradod.id)
+            t.approved = True
+            t.save()
+
+
 
     context = {
 

@@ -12,7 +12,7 @@
     <!-- Start Status area -->
     <div class="notika-status-area">
         <div class="container">
-            <div class="row">
+            <div id="diagram" class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
@@ -76,7 +76,7 @@
     <!-- End Status area-->
 
     <!-- Data Table area Start-->
-    <div class="data-table-area">
+    <div id="table" class="data-table-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -91,8 +91,8 @@
 
                             {#                            <p>It's just that simple. Turn your simple table into a sophisticated data table and offer your users a nice experience and great features without any effort.</p>#}
                         </div>
-                        <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
+                        <div id="testing" class="table-responsive">
+                        <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                 <tr>
                                         <th>پلاک</th>
@@ -143,3 +143,12 @@
 
 
 {% endblock content %}
+
+{% block extra_scripts %}
+    <script>
+   setTimeout(function(){
+       location.reload();},
+       10000);
+</script>
+{% endblock %}
+
