@@ -122,8 +122,10 @@
                 <div class="form-group">
                     <div class="nk-int-st">
                         {#            {{ register_form.plate_firstnum }}#}
-                        <input type="text" class="form-control" maxlength="30" placeholder="۹۹"
-                               name="plate_firstnum">
+                        <input type="number" class="form-control" placeholder="۹۹"
+                               name="plate_firstnum"
+                               onKeyDown="if(this.value.length==2 && event.keyCode!==8) return false;">
+
                     </div>
                 </div>
             </div>
@@ -141,8 +143,9 @@
                 <div class="form-group">
                     <div class="nk-int-st">
                         {#            {{ register_form.plate_secondnum }}#}
-                        <input type="text" class="form-control" maxlength="30" placeholder="۹۹۹"
-                               name="plate_secondnum">
+                        <input type="number" class="form-control" placeholder="۹۹۹"
+                               name="plate_secondnum"
+                                   onKeyDown="if(this.value.length==3 && event.keyCode!==8) return false;">
                     </div>
                 </div>
             </div>
@@ -150,8 +153,9 @@
                 <div class="form-group">
                     <div class="nk-int-st">
                         {#            {{ register_form.plate_citynum }}#}
-                        <input type="text" class="form-control" maxlength="30" placeholder="کد شهر"
-                               name="plate_citynum">
+                        <input type="number" class="form-control" placeholder="کد شهر"
+                               name="plate_citynum"
+                               onKeyDown="if(this.value.length==3 && event.keyCode!==8) return false;">
                     </div>
                 </div>
             </div>
@@ -167,7 +171,6 @@
                 </div>
             </div>
             {{ register_form.plate_type }}
-
             {#            <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>#}
             {#            <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>#}
         </div>
@@ -190,8 +193,8 @@
                 <div class="form-group">
                     <div class="nk-int-st">
                         {#                                        {{ register_form.vehicle_color }}#}
-
-                        <input list="colors" type="text" class="form-control" maxlength="20" placeholder="رنگ وسیله نقلیه"
+                        <input list="colors" type="text" class="form-control" maxlength="20"
+                               placeholder="رنگ وسیله نقلیه"
                                name="vehicle_color">
                         <datalist id="colors">
                             <option value="سفید">
@@ -207,7 +210,8 @@
                 <div class="form-group">
                     <div class="nk-int-st">
                         {#                                        {{ register_form.vehicle_type }}#}
-                        <input list="types" type="text" class="form-control" maxlength="30" placeholder="نوع وسیله نقلیه"
+                        <input list="types" type="text" class="form-control" maxlength="30"
+                               placeholder="نوع وسیله نقلیه"
                                name="vehicle_type">
                         <datalist id="types">
                             <option value="پراید">

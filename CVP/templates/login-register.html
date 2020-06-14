@@ -62,6 +62,8 @@
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     <!-- modernizr JS
 		============================================ -->
+    <link href="{% static 'css/cvp-specials/register-form.css' %}" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -138,13 +140,15 @@
                 <div class="input-group">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-phone"></i></span>
                     <div class="nk-int-st">
-                        <input name="phone" type="text" class="form-control" placeholder="شماره تماس">
+                        <input name="phone" type="number" class="form-control" placeholder="شماره تماس"
+                                   onKeyDown="if(this.value.length==11 && event.keyCode!==8) return false;">
                     </div>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-credit-card"></i></span>
                     <div class="nk-int-st">
-                        <input name="nationalCode" type="text" class="form-control" placeholder="کد ملی">
+                        <input name="nationalCode" type="text" class="form-control" placeholder="کد ملی"
+                                   onKeyDown="if(this.value.length==10 && event.keyCode!==8) return false;">
                     </div>
                 </div>
                 <div class="input-group">
