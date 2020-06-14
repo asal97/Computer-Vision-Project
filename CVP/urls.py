@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('table/', views.table, name='table'),
+    path('download_report/', views.download_report, name='download_report'),
 
     url(r'^register/', include('registerApp.urls')),
     url(r'^account/', include('userApp.urls')),
