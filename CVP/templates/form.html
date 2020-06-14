@@ -191,8 +191,15 @@
                     <div class="nk-int-st">
                         {#                                        {{ register_form.vehicle_color }}#}
 
-                        <input type="text" class="form-control" maxlength="20" placeholder="رنگ وسیله نقلیه"
+                        <input list="colors" type="text" class="form-control" maxlength="20" placeholder="رنگ وسیله نقلیه"
                                name="vehicle_color">
+                        <datalist id="colors">
+                            <option value="سفید">
+                            <option value="مشکی">
+                            <option value="نوک مدادی">
+                            <option value="نقره ای">
+                            <option value="بژ">
+                        </datalist>
                     </div>
                 </div>
             </div>
@@ -200,9 +207,15 @@
                 <div class="form-group">
                     <div class="nk-int-st">
                         {#                                        {{ register_form.vehicle_type }}#}
-
-                        <input type="text" class="form-control" maxlength="30" placeholder="نوع وسیله نقلیه"
+                        <input list="types" type="text" class="form-control" maxlength="30" placeholder="نوع وسیله نقلیه"
                                name="vehicle_type">
+                        <datalist id="types">
+                            <option value="پراید">
+                            <option value="پژو ۴۰۵">
+                            <option value="پژو ۲۰۶">
+                            <option value="پژو ۲۰۷">
+                            <option value="پژو پارس">
+                        </datalist>
                     </div>
                 </div>
             </div>
