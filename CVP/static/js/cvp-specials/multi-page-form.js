@@ -40,26 +40,45 @@ function nextPrev(n) {
 }
 
 function validateForm() {
-    return true;
-    // TODO: This function deals with validation of the form fields
-    var x, y, i, valid = true;
-    x = document.getElementsByClassName("tab");
-    y = x[currentTab].getElementsByTagName("input");
-    // A loop that checks every input field in the current tab:
-    for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value == "") {
-            // add an "invalid" class to the field:
-            y[i].className += " invalid";
-            // and set the current valid status to false
-            valid = false;
+    var form = document.forms["multiPageForm"];
+    var message = "دقت کنید حتما بخش های ضروری را پر کرده باشید";
+    var valid = true;
+    switch (currentTab) {
+        case 1: // مشخصات ماشین
+        {
+            if (form["plate_firstnum"].value.length && form["plate_secondnum"].value.length &&
+                form["plate_citynum"].value.length) {
+
+            } else {
+                valid = false;
+            }
+            break;
+        }
+        case 2: // مشخصات ظاهری
+        {
+            if (form["vehicle_color"].value.length && form["vehicle_type"].value.length &&
+                form["vehicle_picture"].value.length) {
+
+            } else {
+                valid = false;
+            }
+            break;
+        }
+        default: // مشخصات مالک
+        {
+            if (form["owner_firstname"].value.length && form["owner_lastname"].value.length &&
+                form["owner_nationalcode"].value.length && form["owner_phone"].value.length &&
+                form["owner_picture"].value.length) {
+                break;
+            } else {
+                valid = false;
+            }
         }
     }
-    // If the valid status is true, mark the step as finished and valid:
-    if (valid) {
-        document.getElementsByClassName("step")[currentTab].className += " finish";
+    if (!valid) {
+        alert(message);
     }
-    return valid; // return the valid status
+    return valid;
 }
 
 function fixStepIndicator(n) {

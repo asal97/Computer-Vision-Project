@@ -10,7 +10,7 @@
 {% block content %}
 
     <!-- third try -->
-    <form id="register-form" action="{% url 'register' %}" method="post" enctype="multipart/form-data">
+    <form name="multiPageForm" id="register-form" action="{% url 'register' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input name="form-key" value="ثبت-مشخصات" hidden>
 
