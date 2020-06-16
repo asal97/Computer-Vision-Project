@@ -39,6 +39,34 @@ function nextPrev(n) {
     showTab(currentTab);
 }
 
+function validateMelliCode(melliCode) {
+
+    if (melliCode.length != 10) {
+        return false; // Melli Code is less or more than 10 digits
+    } else {
+        var sum = 0;
+
+        for (var i = 0; i < 9; i++) {
+            sum += parseInt(melliCode.charAt(i)) * (10 - i);
+        }
+
+        var lastDigit;
+        var divideRemaining = sum % 11;
+
+        if (divideRemaining < 2) {
+            lastDigit = divideRemaining;
+        } else {
+            lastDigit = 11 - (divideRemaining);
+        }
+
+        if (parseInt(melliCode.charAt(9)) == lastDigit) {
+            return true;
+        } else {
+            return false; // Invalid MelliCode
+        }
+    }
+}
+
 function validateForm() {
     var form = document.forms["multiPageForm"];
     var message = "دقت کنید حتما بخش های ضروری را پر کرده باشید";
@@ -69,7 +97,13 @@ function validateForm() {
             if (form["owner_firstname"].value.length && form["owner_lastname"].value.length &&
                 form["owner_nationalcode"].value.length && form["owner_phone"].value.length &&
                 form["owner_picture"].value.length) {
-                break;
+                if (!validateMelliCode(form["owner_nationalcode"].value)) {
+                    message = "کد ملی وارد شده معتبر نمی باشد";
+                    valid = false;
+                } else if(form["owner_phone"].value.length < 10){
+                    message = "تعداد ارقام شماره تماس وارد شده را چک کنید";
+                    valid = false;
+                }
             } else {
                 valid = false;
             }
