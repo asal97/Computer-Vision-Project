@@ -10,12 +10,27 @@
 {% block content %}
 
     <!-- third try -->
-    <form name="multiPageForm" id="register-form" action="{% url 'register' %}" method="post" enctype="multipart/form-data">
+    <form name="multiPageForm" id="register-form" action="{% url 'register' %}" method="post"
+          enctype="multipart/form-data">
         {% csrf_token %}
         <input name="form-key" value="ثبت-مشخصات" hidden>
 
         <h1>ثبت وسیله ی نقلیه جدید</h1>
         <!-- One "tab" for each step in the form: -->
+
+        {% if status == -1 %}
+            <div class="alert alert-danger alert-dismissible" style="text-align: right">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>خطا!</strong> مشخصات شما در سامانه ثبت نشد، حتما از صحت اطلاعات ورودی و منحصر به فرد بودن پلاک
+                در سامانه اطمینان حاصل فرمایید
+            </div>
+        {% elif status == 1 %}
+            <div class="alert alert-success alert-dismissible" style="text-align: right">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                مشخصات وارد شده با موفقیت در سامانه ثبت شد
+            </div>
+        {% endif %}
+
         <div class="tab">
 
 
