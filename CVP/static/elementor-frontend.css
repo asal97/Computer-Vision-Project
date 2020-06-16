@@ -2699,9 +2699,11 @@ ul.elementor-icon-list-items.elementor-inline-items .elementor-inline-item {
 }
 
 .elementor-widget .elementor-icon-list-icon + .elementor-icon-list-text {
-    -ms-flex-item-align: center;
-    align-self: center;
-    padding-right: 5px
+  align-self: center;
+    padding-right: 5px;
+    font-size: 20px;
+    display: contents;
+
 }
 
 .elementor-widget .elementor-icon-list-icon {

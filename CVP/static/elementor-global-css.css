@@ -80,9 +80,9 @@
 }
 
 .elementor-widget-icon-box .elementor-icon-box-content .elementor-icon-box-description {
-    color: #7a7a7a;
+    color: #000;
     font-size: larger;
-    font-weight: bold;
+    font-weight: initial;
 }
 
 .elementor-widget-star-rating .elementor-star-rating__title {
@@ -94,7 +94,12 @@
 }
 
 .elementor-widget-icon-list .elementor-icon-list-icon i {
-    color: #6ec1e4;
+    color: #000;
+    display: inline-block;
+   margin-bottom: 10px;
+    margin-left: 10px;
+    vertical-align: middle;
+
 }
 
 .elementor-widget-icon-list .elementor-icon-list-icon svg {
