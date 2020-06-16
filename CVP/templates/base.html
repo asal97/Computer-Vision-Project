@@ -12,7 +12,9 @@
 
 <body>
 {% include 'navbar.html' %}
+{% block menu %}
 {% include 'menu.html' %}
+{% endblock %}
 {% block content %} {% endblock %}
 {% include 'footer.html' %}
 {% block extra_scripts %} {% endblock %}

@@ -253,12 +253,11 @@ def table(request):
         if vehicle.active:
             Vehicle_list.append(vehicle.plate.get_status())
 
-
     # getting data for the diagram for table page
     today = get_total_today(Taradod_list)
-    last_hour = today[len(today)-1]
-    today = today[0:len(today)-1]
-    print("last ",last_hour)
+    last_hour = today[len(today) - 1]
+    today = today[0:len(today) - 1]
+    print("last ", last_hour)
 
     week = get_week_day(Taradod_list)
     last_day = week[len(week) - 1]
@@ -285,14 +284,13 @@ def table(request):
 
     context = {
 
-        'monthsCount': np.sum(months_of_year)+ last_month,
+        'monthsCount': np.sum(months_of_year) + last_month,
         'months': months_of_year,
-        'last_month':last_month,
+        'last_month': last_month,
 
         'days': days_of_month,
         'daysCount': np.sum(days_of_month) + last_day_month,
         'last_day_month': last_day_month,
-
 
         'weekCount': np.sum(week) + last_day,
         'week': week,
@@ -305,3 +303,7 @@ def table(request):
         'Taradod_list': Taradod_list,
     }
     return render(request, 'table.html', context)
+
+
+def about(request):
+    return render(request, 'about-us.html')

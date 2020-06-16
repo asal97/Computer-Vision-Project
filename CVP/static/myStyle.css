@@ -23,7 +23,9 @@
     /*border: 7px solid  #00c292;*/
 
 }
-
+.rtl-row{
+    direction: rtl;
+}
 .notShadow{
     box-shadow: none;
 }
@@ -48,6 +50,7 @@
     color: black;
     margin-bottom: 2%;
 }
+
 .dateCss{
     padding-bottom: 0.5%;
     float: left;
@@ -58,3 +61,45 @@
     color: black;
     margin-bottom: 2%;
 }
+.aboutHead{
+     padding-top: 25px;
+    padding-bottom: 15px;
+    font-size: 60px;
+    text-align: center;
+}
+.aboutHead3{
+     padding-bottom: 50px;
+    position: relative;
+    font-size: 25px;
+    text-align: center;
+}
+
+.center {
+
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#btn-size{
+      -webkit-border-radius: 12px;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 25px;
+}
+#margin{
+    position: relative;
+}
+
+
+#wrapper {
+display:inline-block;
+min-width: 50px;
+width: 80px;
+padding:5px 10px;
+}
+

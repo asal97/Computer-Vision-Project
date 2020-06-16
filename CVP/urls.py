@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('table/', views.table, name='table'),
-
+    path('about-us/', views.about, name='about-us'),
     url(r'^register/', include('registerApp.urls')),
     url(r'^account/', include('userApp.urls')),
     url(r'^traffic/', include('taradodApp.urls')),
