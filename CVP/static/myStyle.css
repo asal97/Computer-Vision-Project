@@ -8,6 +8,9 @@
     margin: 5px;
     font-size: 30px;
 }
+#section-4{
+    margin-bottom: 30px;
+}
 .capture{
 
     -moz-border-radius: 12px;
@@ -74,8 +77,11 @@
     text-align: center;
 }
 
-.center {
+#centerDiv{
+display: flex;
+}
 
+.center {
   margin: 0;
   position: relative;
   top: 50%;

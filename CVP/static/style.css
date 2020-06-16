@@ -1889,8 +1889,10 @@ ul.wizard-nav-ac li .disabled{
     box-shadow: none;
 }
 .notika-accrodion-cus .panel-title>a{
-	font-size:16px;
+	font-size:30px;
 	color:#333;
+    font-weight: initial;
+display: contents;
 }
 .notika-accrodion-cus .panel-body p, .popovers-pr-sg p{
 	font-size:14px;
