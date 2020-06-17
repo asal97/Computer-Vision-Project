@@ -30,6 +30,15 @@ def traffic_report(request, traffic_id):
             (Q(plate__plate_type=1) & Q(plate__alpha=ALPHA_MAP[plate_split[2].strip()]) &
              Q(plate__firstNum=int(plate_split[3])) & Q(plate__secondNum=int(plate_split[1])))
         )
+
+    # changing active status of the current car with button form
+    if request.method == 'POST':
+        car = Vehicle.objects.get(id=vehicle[0].id)
+        car.active = False
+        car.save()
+
+    # end of action
+
     context = {
         'this_traffic': this_traffic,
         'this_vehicle': vehicle[0],

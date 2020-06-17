@@ -17,7 +17,20 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
                         <div class="basic-tb-hd">
-                            <h1 class="basic_table" style="text-align: center;">{{ this_vehicle.plate }}</h1>
+                            <h1 class="basic_table" style="text-align: center;
+    margin-bottom: 15px;">{{ this_vehicle.plate }}</h1>
+
+<!-- button for changing active status -->
+                            <form method='POST'>
+                                 {% csrf_token %}
+                                <button id="deactive" type='submit' style="text-align: center;
+    margin: 0 auto;
+    display: block;font-size: 22px;" class="btn btn-danger notika-btn-danger">غیر فعال سازی</button>
+
+                            </form>
+<!-- end of button for changing active status -->
+
+
                         </div>
 
                         <div class="row">

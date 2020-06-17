@@ -8,6 +8,10 @@ from django.db.models import Count
 import calendar
 from django.db.models.functions import ExtractDay, ExtractHour, ExtractWeekDay
 from django.db.models import Q
+from calendar import monthrange
+import csv
+from django.http import HttpResponse
+from django.db.models import Q
 
 from collections import Counter
 
@@ -325,3 +329,16 @@ def table(request):
         'Taradod_list': Taradod_list,
     }
     return render(request, 'table.html', context)
+
+
+
+def download_report(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="report.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['پلاک', 'تاریخ تردد', 'وضعیت تردد'])
+    traffics = Taradod.objects.all().values_list('plate', 'seen',
+                                                 'approved')  # TODO: use Q() for filter some specific data
+    for traffic in traffics:
+        writer.writerow(traffic)
+    return response
