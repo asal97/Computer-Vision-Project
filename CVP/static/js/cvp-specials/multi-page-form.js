@@ -39,7 +39,6 @@ function nextPrev(n) {
     showTab(currentTab);
 }
 
-// TODO: pelak ke sefr nadare :D
 function validateMelliCode(melliCode) {
 
     if (melliCode.length != 10) {
@@ -75,11 +74,26 @@ function validateForm() {
     switch (currentTab) {
         case 1: // مشخصات ماشین
         {
-            if (form["plate_firstnum"].value.length && form["plate_secondnum"].value.length &&
-                form["plate_citynum"].value.length) {
-
-            } else {
-                valid = false;
+            if (document.getElementById("id_plate_type").value == "2") { // سواری انزلی
+                if(form["plate_firstnum"].value.length != 5){
+                    message = "بخش اول پلاک باید ۵ رقمی باشد";
+                    valid = false;
+                }
+                else if(form["plate_secondnum"].value.length != 2){
+                    message = "بخش دوم پلاک باید ۲ رقمی باشد";
+                    valid = false;
+                }
+            } else { // پلاک ملی
+                if(form["plate_firstnum"].value.length != 2){
+                    message = "بخش اول پلاک باید ۲ رقمی باشد";
+                    valid = false;
+                } else if(form["plate_secondnum"].value.length != 3){
+                    message = "بخش دوم پلاک باید ۳ رقمی باشد";
+                    valid = false;
+                } else if(form["plate_citynum"].value.length != 2){
+                    message = "کد شهرستان باید ۲ رقمی باشد";
+                    valid = false;
+                }
             }
             break;
         }
@@ -95,18 +109,25 @@ function validateForm() {
         }
         default: // مشخصات مالک
         {
-            if (form["owner_firstname"].value.length && form["owner_lastname"].value.length &&
-                form["owner_nationalcode"].value.length && form["owner_phone"].value.length &&
-                form["owner_picture"].value.length) {
+            if (document.getElementById("owner_select").value == "old_owner") { // از مالکین ثبت شده در سیستم
                 if (!validateMelliCode(form["owner_nationalcode"].value)) {
                     message = "کد ملی وارد شده معتبر نمی باشد";
                     valid = false;
-                } else if (form["owner_phone"].value.length < 10) {
-                    message = "تعداد ارقام شماره تماس وارد شده را چک کنید";
+                }
+            } else { // ثبت مالک جدید
+                if (form["owner_firstname"].value.length && form["owner_lastname"].value.length &&
+                    form["owner_nationalcode"].value.length && form["owner_phone"].value.length &&
+                    form["owner_picture"].value.length) {
+                    if (!validateMelliCode(form["owner_nationalcode"].value)) {
+                        message = "کد ملی وارد شده معتبر نمی باشد";
+                        valid = false;
+                    } else if (form["owner_phone"].value.length < 10) {
+                        message = "تعداد ارقام شماره تماس وارد شده را چک کنید";
+                        valid = false;
+                    }
+                } else {
                     valid = false;
                 }
-            } else {
-                valid = false;
             }
         }
     }

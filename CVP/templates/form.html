@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <select class="form-control" id="owner_select">
+            <select class="form-control" id="owner_select" name="owner_select_field">
                 <option value="new_owner">ثبت مالک جدید</option>
                 <option value="old_owner">از مالکین ثبت شده در سیستم</option>
             </select>
@@ -157,7 +157,6 @@
                         {#            {{ register_form.plate_firstnum }}#}
                         <input type="number" class="form-control" placeholder="۹۹"
                                name="plate_firstnum"
-                               onKeyDown="if(this.value.length==2 && event.keyCode!==8) return false;"
                                id="plate_firstnum_id">
                     </div>
                 </div>
@@ -180,7 +179,6 @@
                         {#            {{ register_form.plate_secondnum }}#}
                         <input type="number" class="form-control"
                                name="plate_secondnum"
-                               onKeyDown="if(this.value.length==3 && event.keyCode!==8) return false;"
                                id="plate_secondnum_id">
                     </div>
                 </div>
@@ -190,8 +188,7 @@
                     <div class="nk-int-st">
                         {#            {{ register_form.plate_citynum }}#}
                         <input type="number" class="form-control" placeholder="کد شهر"
-                               name="plate_citynum"
-                               onKeyDown="if(this.value.length==3 && event.keyCode!==8) return false;">
+                               name="plate_citynum">
                     </div>
                 </div>
             </div>
