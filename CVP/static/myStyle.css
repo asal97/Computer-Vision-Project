@@ -47,13 +47,22 @@
     float: right;
     font-size-adjust: 0.5;
     font-size: larger;
-    font-weight: bold;
     text-align: right;
     margin-top: 1%;
     color: black;
     margin-bottom: 2%;
 }
-
+.PageTitle:hover,.PageTitle:focus {
+    color: #fff;
+}
+.mybtn{
+    border:none;
+	outline:none !important;
+	border-radius:2px;
+	color:#fff;
+	font-size:14px;
+    border-radius:50%;
+}
 .dateCss{
     padding-bottom: 0.5%;
     float: left;
@@ -100,7 +109,24 @@ display: flex;
 #margin{
     position: relative;
 }
+@media screen and (min-width: 601px) {
+  p.dateCss {
+    font-size: 15px;
+  }
+a.PageTitle{
+     font-size: 15px;
+}
+}
 
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  p.dateCss {
+    font-size: 11px;
+  }
+    a.PageTitle{
+     font-size: 11px;
+}
+}
 
 #wrapper {
 display:inline-block;
@@ -108,4 +134,3 @@ min-width: 50px;
 width: 80px;
 padding:5px 10px;
 }
-
