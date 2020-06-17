@@ -110,8 +110,8 @@
                                 <tbody>
 
                                 {% for data in Taradod_list %}
-                                    <tr style="cursor: pointer;"
-                                        onclick="window.location='{{ data.get_absolute_url }}';">
+                                    <tr {% if data.approved %}style="cursor: pointer;"
+                                        onclick="window.location='{{ data.get_absolute_url }}';"{% endif %}>
 
                                     <td class="persianTable">{{ data.plate }}</td>
 
