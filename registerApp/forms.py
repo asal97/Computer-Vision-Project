@@ -13,11 +13,11 @@ class RegisterForm(forms.Form):
     owner_description = forms.CharField(widget=forms.Textarea, required=False)
     owner_picture = forms.ImageField(required=False)
 
-    plate_type = forms.ChoiceField(choices=PLATE_CHOICES)
+    plate_type = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=PLATE_CHOICES)
     plate_firstnum = forms.IntegerField()
     plate_secondnum = forms.IntegerField()
     plate_citynum = forms.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(10)])
-    plate_alpha = forms.ChoiceField(choices=ALPHA_CHOICES)
+    plate_alpha = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=ALPHA_CHOICES)
 
     vehicle_color = forms.CharField(max_length=10)
     vehicle_type = forms.CharField(max_length=20)
