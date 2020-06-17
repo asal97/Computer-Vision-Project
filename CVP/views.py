@@ -331,7 +331,6 @@ def table(request):
     return render(request, 'table.html', context)
 
 
-
 def download_report(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="report.csv"'
@@ -342,3 +341,7 @@ def download_report(request):
     for traffic in traffics:
         writer.writerow(traffic)
     return response
+
+
+def about(request):
+    return render(request, 'about-us.html')

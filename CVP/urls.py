@@ -23,7 +23,9 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
+    path('', views.about, name='about-us'),
+
+    path('index/', views.index, name='index'),
     path('table/', views.table, name='table'),
     path('download_report/', views.download_report, name='download_report'),
 

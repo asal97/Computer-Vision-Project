@@ -8,14 +8,17 @@
     margin: 5px;
     font-size: 30px;
 }
+#section-4{
+    margin-bottom: 30px;
+}
 .capture{
 
     -moz-border-radius: 12px;
     -webkit-border-radius: 12px;
     border-radius: 12px;
-    -moz-box-shadow: 4px 4px 14px #000;
-    -webkit-box-shadow: 4px 4px 14px #000;
-    box-shadow: 4px 4px 14px #000;
+   -moz-box-shadow: 1px 1px 5px #000;
+    -webkit-box-shadow: 1px 1px 5px #000;
+    box-shadow: 1px 1px 5px #000;
     border-top: #00c292 4px solid;
     border-right: #00c292 2px solid;
     border-left: #00c292 2px solid;
@@ -23,7 +26,9 @@
     /*border: 7px solid  #00c292;*/
 
 }
-
+.rtl-row{
+    direction: rtl;
+}
 .notShadow{
     box-shadow: none;
 }
@@ -42,11 +47,21 @@
     float: right;
     font-size-adjust: 0.5;
     font-size: larger;
-    font-weight: bold;
     text-align: right;
     margin-top: 1%;
     color: black;
     margin-bottom: 2%;
+}
+.PageTitle:hover,.PageTitle:focus {
+    color: #fff;
+}
+.mybtn{
+    border:none;
+	outline:none !important;
+	border-radius:2px;
+	color:#fff;
+	font-size:14px;
+    border-radius:50%;
 }
 .dateCss{
     padding-bottom: 0.5%;
@@ -57,4 +72,102 @@
     margin-top: 1%;
     color: black;
     margin-bottom: 2%;
+}
+.aboutHead{
+     padding-top: 25px;
+    padding-bottom: 15px;
+    font-size: 60px;
+    text-align: center;
+}
+.aboutHead3{
+     padding-bottom: 50px;
+    position: relative;
+    font-size: 25px;
+    text-align: center;
+}
+
+#centerDiv{
+display: flex;
+}
+
+.center {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#btn-size{
+    -webkit-border-radius: 12px;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 25px;
+}
+#margin{
+    position: relative;
+}
+@media screen and (min-width: 768px) {
+  p.dateCss {
+    font-size: 15px;
+  }
+a.PageTitle{
+     font-size: 15px;
+}
+    h1.aboutHead {
+        font-size: 60px;
+    }
+     h3.aboutHead3{
+        font-size: 25px;
+    }
+    a#btn-size{
+        font-size: 25px;
+    }
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 767px) {
+  p.dateCss {
+    font-size: 14px;
+  }
+    a.PageTitle{
+     font-size: 15px;
+}
+    h1.aboutHead{
+        font-size: 40px;
+    }
+    h3.aboutHead3{
+        font-size: 18px;
+    }
+
+       a#btn-size{
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 480px) {
+  p.dateCss {
+    font-size: 13px;
+  }
+    a.PageTitle{
+     font-size: 13px;
+}
+    h1.aboutHead{
+        font-size: 24px;
+    }
+     h3.aboutHead3{
+        font-size: 12px;
+    }
+    a#btn-size{
+        font-size: 12px;
+    }
+
+}
+
+#wrapper {
+display:inline-block;
+min-width: 50px;
+width: 80px;
+padding:5px 10px;
 }

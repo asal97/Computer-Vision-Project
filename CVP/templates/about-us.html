@@ -1,0 +1,357 @@
+{% extends 'base.html' %}
+{% block menu %}
+
+{% endblock %}
+{% load static %}
+{% block extra_header %}
+
+    <link rel="stylesheet" href="{% static ' normalize.css' %}">
+	<link rel="stylesheet" href="{% static 'ideal-image-slider.css'%}">
+	<link rel="stylesheet" href="{% static 'default.css'%}">
+	<style media="screen">
+	#slider {
+		max-width: 900px;
+		margin: 50px auto;
+	}
+	</style>
+
+
+
+    <link rel='stylesheet' id='wpdm-font-awesome-css'
+          href='https://use.fontawesome.com/releases/v5.12.1/css/all.css?ver=5.4.2' type='text/css' media='all'/>
+
+
+    <link rel="stylesheet" href="{% static 'elementor-frontend.css' %}">
+    <link rel="stylesheet" href="{% static 'elementor-global-css.css' %}">
+
+
+    <link rel='stylesheet' id='elementor-icons-fa-solid-css'
+          href='https://shahaab-co.ir/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=5.12.0'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='elementor-icons-fa-regular-css'
+          href='https://shahaab-co.ir/wp-content/plugins/elementor/assets/lib/font-awesome/css/regular.min.css?ver=5.12.0'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='elementor-icons-fa-brands-css'
+          href='https://shahaab-co.ir/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.12.0'
+          type='text/css' media='all'/>
+{% endblock %}
+
+
+
+
+{% block content %}
+    <div style=" font-family:  'Roboto', 'Scheherazade', serif ;" class="container">
+        <div id="margin" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+            <h1 class="aboutHead">
+                سامانه نظارت تردد و تشخیص پلاک
+            </h1>
+
+            <h3 class="aboutHead3">
+                بستری جامع و تخصصی در زمینه ی مدیریت و کنترل هوشمند تردد
+            </h3>
+            <a href="{% url 'login' %}" id="btn-size" class=" center btn-text btn btn-success notika-btn-success">عضویت</a>
+
+        </div>
+    </div>
+    <br>
+
+
+<!---- four emoji part -->
+    <section id="section-4"
+             class="elementor-element elementor-element-502c06dd elementor-section-boxed elementor-section-height-default elementor-section-height-default parallax_section_no qodef_elementor_container_no elementor-section elementor-top-section"
+             data-id="502c06dd" data-element_type="section">
+        <div class="elementor-container elementor-column-gap-no">
+            <div class="elementor-row">
+                <div class="elementor-element elementor-element-3699a90d elementor-column elementor-col-25 elementor-top-column"
+                     data-id="3699a90d" data-element_type="column"
+                     data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                    <div class="elementor-column-wrap  elementor-element-populated">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-312882f1 elementor-view-default elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-icon-box"
+                                 data-id="312882f1" data-element_type="widget" data-widget_type="icon-box.default">
+                                <div class="elementor-widget-container">
+                                     <div class="elementor-icon-box-wrapper">
+                                        <div class="elementor-icon-box-icon">
+				<span class="elementor-icon elementor-animation-">
+				<i aria-hidden="true" class="fas fa-video"></i>				</span>
+                                        </div>
+                                        <div class="elementor-icon-box-content">
+                                            <h3 class="elementor-icon-box-title">
+                                                <span>نظارت آنلاین</span>
+                                            </h3>
+                                            <p class="elementor-icon-box-description">امکان مشاهده بر خط تردد ها</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="elementor-element elementor-element-4afa574d elementor-widget elementor-widget-divider"
+                                 data-id="4afa574d" data-element_type="widget" data-widget_type="divider.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-element elementor-element-7537fe6f elementor-column elementor-col-25 elementor-top-column"
+                     data-id="7537fe6f" data-element_type="column"
+                     data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                    <div class="elementor-column-wrap  elementor-element-populated">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-65616ea elementor-view-default elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-icon-box"
+                                 data-id="65616ea" data-element_type="widget" data-widget_type="icon-box.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-icon-box-wrapper">
+                                        <div class="elementor-icon-box-icon">
+				<span class="elementor-icon elementor-animation-">
+				<i aria-hidden="true" class="far fa-id-card"></i>				</span>
+                                        </div>
+                                        <div class="elementor-icon-box-content">
+                                            <h3 class="elementor-icon-box-title">
+                                                <span>ثبت نامحدود کاربر سیستمی</span>
+                                            </h3>
+                                            <p class="elementor-icon-box-description">با قابلیت اضافه کردن پلاک های مجاز</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="elementor-element elementor-element-1a55981a elementor-widget elementor-widget-divider"
+                                 data-id="1a55981a" data-element_type="widget" data-widget_type="divider.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-element elementor-element-7faa3a3b elementor-column elementor-col-25 elementor-top-column"
+                     data-id="7faa3a3b" data-element_type="column"
+                     data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                    <div class="elementor-column-wrap  elementor-element-populated">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-5fa6a459 elementor-view-default elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-icon-box"
+                                 data-id="5fa6a459" data-element_type="widget" data-widget_type="icon-box.default">
+                                <div class="elementor-widget-container">
+                                      <div class="elementor-icon-box-wrapper">
+                                        <div class="elementor-icon-box-icon">
+				                <span class="elementor-icon elementor-animation-">
+				                <i aria-hidden="true" class="far fa-chart-bar"></i>
+                                </span>
+                                        </div>
+                                        <div class="elementor-icon-box-content">
+                                            <h3 class="elementor-icon-box-title">
+                                                <span>تحلیل ترددها</span>
+                                            </h3>
+                                            <p class="elementor-icon-box-description">تفکیک داده ها بر حسب ساعت، روز، هفته و ...</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="elementor-element elementor-element-5f07f1de elementor-widget elementor-widget-divider"
+                                 data-id="5f07f1de" data-element_type="widget" data-widget_type="divider.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-element elementor-element-72b925f5 elementor-column elementor-col-25 elementor-top-column"
+                     data-id="72b925f5" data-element_type="column"
+                     data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                    <div class="elementor-column-wrap  elementor-element-populated">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-65c86dbe elementor-view-default elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-icon-box"
+                                 data-id="65c86dbe" data-element_type="widget" data-widget_type="icon-box.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-icon-box-wrapper">
+                                        <div class="elementor-icon-box-icon">
+				<span class="elementor-icon elementor-animation-">
+
+				<i aria-hidden="true" class="fas fa-car"></i>				</span>
+                                        </div>
+                                        <div class="elementor-icon-box-content">
+                                            <h3 class="elementor-icon-box-title">
+                                                <span>کنترل هوشمند</span>
+                                            </h3>
+                                            <p class="elementor-icon-box-description">ثبت گزارش لحظه به لحظه از سیستم</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="elementor-element elementor-element-5ee237b8 elementor-widget elementor-widget-divider"
+                                 data-id="5ee237b8" data-element_type="widget" data-widget_type="divider.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!---- end of four emoji part -->
+
+<!----- screenshots part --->
+
+<div id="slider" >
+		<img src="{% static 'Screen Shot 2020-06-17 at 15.00.02.png' %}" data-src-2x="{% static '1@2x.jpg' %}" alt="Slide 1" />
+		<img data-src="{% static '2.jpg' %}" data-src-2x="{% static '2@2x.jpg' %}" src="" alt="Slide 2" />
+		<a href="http://example.com"><img data-src="{% static '3.jpg' %}" data-src-2x="{% static '3@2x.jpg' %}" src="" alt="Slide 3" /></a>
+		<img data-src="{% static '4.jpg' %}" data-src-2x="{% static '4@2x.jpg' %}" src="" alt="Slide 4" />
+</div>
+<!----- end of screenshots part --->
+
+
+
+<!---- description part -->
+
+   <div class="accordion-area">
+        <div style="width: 50%" class=" container">
+            <div style="direction: rtl" class=" row">
+                <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="accordion-wn-wp">
+                        <div  class=" row">
+                            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                <div class=" accordion-stn ">
+                                    <div class="panel-group" data-collapse-color="nk-green" id="accordionGreen" role="tablist" aria-multiselectable="true">
+                                        <div class="panel panel-collapse notika-accrodion-cus">
+                                            <div class="panel-heading" role="tab">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordionGreen" href="#accordionGreen-one" aria-expanded="true">
+															مدیریت هوشمند تردد
+														</a>
+                                                </h4>
+                                            </div>
+                                            <div id="accordionGreen-one" class="collapse in" role="tabpanel">
+                                                <div class="panel-body">
+                                                    <p style="font-size:20px;justify-content: center">
+
+امروزه مدیریت تردد یکی از مهم ترین نیازمندی های اکثر سازمان ها، مجتمع های مسکونی، عوارضی ها و پارکینگ های عمومی و اختصاصی است. نرم افزار های مدیریت تردد زیادی در کشور تهیه شده است که اکثر آن ها نیازمند یک باجه نگهبانی و کاربر انسانی هستند.
+
+این روش شاید تا حدودی پاسخگوی نیاز ها باشد، اما در دراز مدت، مقرون به صرفه نیست. از طرفی سازمان ها، پارکینگ ها و مجتمع های مسکونی غالبا به منظور برقراری امنیت، نیازمند استفاده از سامانه های دوربین مدار بسته هستند.
+
+تشخیص پلاک یک فرایند نظارت تصویری است که از طریق شناسایی خودکار حروف و ارقام در تصاویر خودروها، صورت می گیرد. تشخیص پلاک می تواند از طریق دوربین های نظارتی در سطح جاده ها و خیابان ها و یا با استفاده از دوربین های مدار بسته برای کاربردهایی مانند مدیریت پارکینگ و عوارضی ها مورد استفاده قرار گیرد.
+
+به منظور استفاده بهتر از دوربین ها، می توان ورود و خروج خودروها را نیز با استفاده از سامانه تشخیص پلاک و مدیریت تردد، ثبت کرد و در اختیار هیات مدیره قرار داد. ضمن اینکه می توان برای هوشمند سازی رفت و آمد، درب ورودی را به سامانه مدیریت تردد متصل کرد تا به صورت خودکار با استفاده از شماره پلاک خودرو، درب را باز کند.
+
+پلاک خوان قلب هر سیستم حمل و نقل هوشمند است. این تکنولوژی می تواند توسط بخش های مختلف نیروهای انتظامی و پلیس به عنوان روشی جهت جمع آوری الکترونیکی وجه عوارضی در جاده ها و نظارت بر وضعیت ترافیک (مانند تخلفات عبور از چراغ قرمز) استفاده گردد.
+
+در این راستا شرکت شهاب، نرم افزار مدیریت پارکینگ و تردد آی پلاک با قابلیت های ویژه برای مجتمع های مسکونی، سازمان ها و ادارات، پارکینگ ها، باسکول ها، راه ها و… تولید و عرضه کرده است. این نرم افزار که با جدیدترین سکوی برنامه نویسی مایکروسافت (WPF) نوشته شده است و از موتور هوشمند تشخیص پلاک ساتپا بهره می برد.
+</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-collapse notika-accrodion-cus">
+                                            <div class="panel-heading" role="tab">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionGreen" href="#accordionGreen-two" aria-expanded="false">
+															مهم ترین قابلیت ها
+														</a>
+                                                </h4>
+                                            </div>
+                                            <div id="accordionGreen-two" class="collapse" role="tabpanel">
+                                                <div class="panel-body">
+                                    <div class="elementor-element elementor-element-6532322c elementor-icon-list--layout-traditional elementor-widget elementor-widget-icon-list" data-id="6532322c" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item" >
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-video"></i>						</span>
+										<span class="elementor-icon-list-text">اتصال به دوربین تشخیص پلاک</span>
+									</li>
+								<li class="elementor-icon-list-item" >
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-users"></i>						</span>
+										<span class="elementor-icon-list-text">امکان تعریف مالکین خودرو</span>
+									</li>
+								<li class="elementor-icon-list-item" >
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-car-side"></i>						</span>
+										<span class="elementor-icon-list-text">امکان تعریف خودرو های مجاز به تعداد دلخواه</span>
+									</li>
+								<li class="elementor-icon-list-item" >
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-user-check"></i>						</span>
+										<span class="elementor-icon-list-text">تخصیص یک یا چند خودرو به هر یک از مالکین</span>
+									</li>
+
+								<li class="elementor-icon-list-item" >
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-save"></i>						</span>
+										<span class="elementor-icon-list-text">ذخیره سازی اطلاعات کامل تردد</span>
+									</li>
+								<li class="elementor-icon-list-item" >
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-user-plus"></i>						</span>
+										<span class="elementor-icon-list-text">امکان تعریف کاربران سیستمی</span>
+									</li>
+                        <li class="elementor-icon-list-item" >
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="far fa-bar-chart"></i>						</span>
+										<span class="elementor-icon-list-text">امکان تحلیل داده ها با نمودار </span>
+									</li>
+								<li class="elementor-icon-list-item" >
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="far fa-calendar-alt"></i>						</span>
+										<span class="elementor-icon-list-text">امکان تهیه گزارش </span>
+									</li>
+
+						</ul>
+				</div>
+				</div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!----  end of description part -->
+
+
+
+
+
+
+    <br>
+
+    <br><br>
+    <br>
+    <br><br>
+    <br>
+{% endblock content %}
+{% block extra_scripts %}
+    <script src="{% static 'ideal-image-slider.js' %}"></script>
+	<script src="{% static 'iis-bullet-nav.js' %}"></script>
+	<script>
+	var slider = new IdealImageSlider.Slider('#slider');
+	slider.addBulletNav();
+	slider.start();
+	</script>
+{% endblock %}
