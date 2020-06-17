@@ -100,7 +100,7 @@ display: flex;
 }
 
 #btn-size{
-      -webkit-border-radius: 12px;
+    -webkit-border-radius: 12px;
     text-decoration: none;
     text-align: center;
     vertical-align: middle;
@@ -109,23 +109,60 @@ display: flex;
 #margin{
     position: relative;
 }
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 768px) {
   p.dateCss {
     font-size: 15px;
   }
 a.PageTitle{
      font-size: 15px;
 }
+    h1.aboutHead {
+        font-size: 60px;
+    }
+     h3.aboutHead3{
+        font-size: 25px;
+    }
+    a#btn-size{
+        font-size: 25px;
+    }
 }
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 767px) {
   p.dateCss {
-    font-size: 11px;
+    font-size: 14px;
   }
     a.PageTitle{
-     font-size: 11px;
+     font-size: 15px;
 }
+    h1.aboutHead{
+        font-size: 40px;
+    }
+    h3.aboutHead3{
+        font-size: 18px;
+    }
+
+       a#btn-size{
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 480px) {
+  p.dateCss {
+    font-size: 13px;
+  }
+    a.PageTitle{
+     font-size: 13px;
+}
+    h1.aboutHead{
+        font-size: 24px;
+    }
+     h3.aboutHead3{
+        font-size: 12px;
+    }
+    a#btn-size{
+        font-size: 12px;
+    }
+
 }
 
 #wrapper {
