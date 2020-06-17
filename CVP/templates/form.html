@@ -141,55 +141,60 @@
 
             {{ register_form.plate_type }}
             <br>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-group ic-cmp-int">
-                        <div class="nk-int-st">
-                            <p style="text-align: right;">شماره پلاک</p>
-                        </div>
-                        <div class="form-ic-cmp">
-                            <i class="notika-icon notika-app"></i>
-                        </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group ic-cmp-int">
+                    <div class="nk-int-st">
+                        <p style="text-align: right;">شماره پلاک</p>
+                    </div>
+                    <div class="form-ic-cmp">
+                        <i class="notika-icon notika-app"></i>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_firstnum_div">
-                    <div class="form-group">
-                        <div class="nk-int-st">
-                            {#            {{ register_form.plate_firstnum }}#}
-                            <input type="text" class="form-control" maxlength="30"
-                                   name="plate_firstnum" id="plate_firstnum_id">
-                        </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_firstnum_div">
+                <div class="form-group">
+                    <div class="nk-int-st">
+                        {#            {{ register_form.plate_firstnum }}#}
+                        <input type="number" class="form-control" placeholder="۹۹"
+                               name="plate_firstnum"
+                               onKeyDown="if(this.value.length==2 && event.keyCode!==8) return false;"
+                               id="plate_firstnum_id">
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_alpha_div">
-                    <div class="form-group">
-                        <div class="nk-int-st">
-                            {#            {{ register_form.plate_alpha }}#}
-                            {#                        <input type="text" class="form-control" maxlength="30" placeholder="الف"#}
-                            {#                               name="plate_alpha">#}
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_alpha_div">
+                <div class="form-group">
+                    <div class="nk-int-st">
+                        {#            {{ register_form.plate_alpha }}#}
+                        {#                        <input type="text" class="form-control" maxlength="30" placeholder="الف"#}
+                        {#                               name="plate_alpha">#}
 
-                            {{ register_form.plate_alpha }}
-                        </div>
+                        {{ register_form.plate_alpha }}
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_secondnum_div">
-                    <div class="form-group">
-                        <div class="nk-int-st">
-                            {#            {{ register_form.plate_secondnum }}#}
-                            <input type="text" class="form-control" maxlength="30"
-                                   name="plate_secondnum" id="plate_secondnum_id">
-                        </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_secondnum_div">
+                <div class="form-group">
+                    <div class="nk-int-st">
+                        {#            {{ register_form.plate_secondnum }}#}
+                        <input type="number" class="form-control"
+                               name="plate_secondnum"
+                               onKeyDown="if(this.value.length==3 && event.keyCode!==8) return false;"
+                               id="plate_secondnum_id">
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_citynum_div">
-                    <div class="form-group">
-                        <div class="nk-int-st">
-                            {#            {{ register_form.plate_citynum }}#}
-                            <input type="text" class="form-control" maxlength="30" placeholder="کد شهر"
-                                   name="plate_citynum">
-                        </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_citynum_div">
+                <div class="form-group">
+                    <div class="nk-int-st">
+                        {#            {{ register_form.plate_citynum }}#}
+                        <input type="number" class="form-control" placeholder="کد شهر"
+                               name="plate_citynum"
+                               onKeyDown="if(this.value.length==3 && event.keyCode!==8) return false;">
                     </div>
                 </div>
+            </div>
             <p style="text-align: right">مقادیر را به همان ترتیب مطالعه ی پلاک از سمت چپ به راست وارد کنید</p>
 
             {#            <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>#}
@@ -215,8 +220,16 @@
                     <div class="nk-int-st">
                         {#                                        {{ register_form.vehicle_color }}#}
 
-                        <input type="text" class="form-control" maxlength="20" placeholder="رنگ وسیله نقلیه"
+                        <input list="colors" type="text" class="form-control" maxlength="20"
+                               placeholder="رنگ وسیله نقلیه"
                                name="vehicle_color">
+                        <datalist id="colors">
+                            <option value="سفید">
+                            <option value="مشکی">
+                            <option value="نوک مدادی">
+                            <option value="نقره ای">
+                            <option value="بژ">
+                        </datalist>
                     </div>
                 </div>
             </div>
@@ -225,8 +238,16 @@
                     <div class="nk-int-st">
                         {#                                        {{ register_form.vehicle_type }}#}
 
-                        <input type="text" class="form-control" maxlength="30" placeholder="نوع وسیله نقلیه"
+                        <input list="types" type="text" class="form-control" maxlength="30"
+                               placeholder="نوع وسیله نقلیه"
                                name="vehicle_type">
+                        <datalist id="types">
+                            <option value="پراید">
+                            <option value="پژو ۴۰۵">
+                            <option value="پژو ۲۰۶">
+                            <option value="پژو ۲۰۷">
+                            <option value="پژو پارس">
+                        </datalist>
                     </div>
                 </div>
             </div>
