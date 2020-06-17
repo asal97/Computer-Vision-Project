@@ -5,6 +5,18 @@
 {% load static %}
 {% block extra_header %}
 
+    <link rel="stylesheet" href="{% static ' normalize.css' %}">
+	<link rel="stylesheet" href="{% static 'ideal-image-slider.css'%}">
+	<link rel="stylesheet" href="{% static 'default.css'%}">
+	<style media="screen">
+	#slider {
+		max-width: 900px;
+		margin: 50px auto;
+	}
+	</style>
+
+
+
     <link rel='stylesheet' id='wpdm-font-awesome-css'
           href='https://use.fontawesome.com/releases/v5.12.1/css/all.css?ver=5.4.2' type='text/css' media='all'/>
 
@@ -195,6 +207,18 @@
     </section>
 <!---- end of four emoji part -->
 
+<!----- screenshots part --->
+
+<div id="slider" >
+		<img src="{% static 'Screen Shot 2020-06-17 at 15.00.02.png' %}" data-src-2x="{% static '1@2x.jpg' %}" alt="Slide 1" />
+		<img data-src="{% static '2.jpg' %}" data-src-2x="{% static '2@2x.jpg' %}" src="" alt="Slide 2" />
+		<a href="http://example.com"><img data-src="{% static '3.jpg' %}" data-src-2x="{% static '3@2x.jpg' %}" src="" alt="Slide 3" /></a>
+		<img data-src="{% static '4.jpg' %}" data-src-2x="{% static '4@2x.jpg' %}" src="" alt="Slide 4" />
+</div>
+<!----- end of screenshots part --->
+
+
+
 <!---- description part -->
 
    <div class="accordion-area">
@@ -310,6 +334,11 @@
 
 <!----  end of description part -->
 
+
+
+
+
+
     <br>
 
     <br><br>
@@ -317,3 +346,12 @@
     <br><br>
     <br>
 {% endblock content %}
+{% block extra_scripts %}
+    <script src="{% static 'ideal-image-slider.js' %}"></script>
+	<script src="{% static 'iis-bullet-nav.js' %}"></script>
+	<script>
+	var slider = new IdealImageSlider.Slider('#slider');
+	slider.addBulletNav();
+	slider.start();
+	</script>
+{% endblock %}
