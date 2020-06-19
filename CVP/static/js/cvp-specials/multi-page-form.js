@@ -109,7 +109,7 @@ function validateForm() {
         }
         default: // مشخصات مالک
         {
-            if (document.getElementById("owner_select").value == "old_owner") { // از مالکین ثبت شده در سیستم
+            if (document.getElementById("id_owner_select").value == "old_owner") { // از مالکین ثبت شده در سیستم
                 if (!validateMelliCode(form["owner_nationalcode"].value)) {
                     message = "کد ملی وارد شده معتبر نمی باشد";
                     valid = false;

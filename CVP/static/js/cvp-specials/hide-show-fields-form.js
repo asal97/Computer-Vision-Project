@@ -1,4 +1,4 @@
-$("#owner_select").change(function () {
+$("#id_owner_select").change(function () {
     if ($(this).val() == "old_owner") {
         //      $("#tab-first").addClass('has-success').removeClass('has-error');
         // $('#owner_nationalcode_div').classList = 'col-lg-12 col-md-12 col-sm-12 col-xs-12';
@@ -22,7 +22,7 @@ $("#owner_select").change(function () {
         // $('#otherField').removeAttr('data-error');
     }
 });
-$("#owner_select").trigger("change");
+$("#id_owner_select").trigger("change");
 
 // ----------------------------<PLATE>-----------------------------------------
 
