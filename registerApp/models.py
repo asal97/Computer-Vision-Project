@@ -83,7 +83,7 @@ class Owner(models.Model):
     family_name = models.CharField(max_length=30)
     phone = models.CharField(max_length=11, blank=True)
     nationalCode = models.CharField(max_length=10, unique=True)
-    description = models.TextField(max_length=300)
+    description = models.TextField(max_length=300, blank=True)
 
     def __str__(self):
         return 'Full Name: %s %s | phone:%s | National Code: %s | %s' % (

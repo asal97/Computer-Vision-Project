@@ -10,12 +10,27 @@
 {% block content %}
 
     <!-- third try -->
-    <form id="register-form" action="{% url 'register' %}" method="post" enctype="multipart/form-data">
+    <form name="multiPageForm" id="register-form" action="{% url 'register' %}" method="post"
+          enctype="multipart/form-data">
         {% csrf_token %}
         <input name="form-key" value="ثبت-مشخصات" hidden>
 
         <h1>ثبت وسیله ی نقلیه جدید</h1>
         <!-- One "tab" for each step in the form: -->
+
+        {% if status == -1 %}
+            <div class="alert alert-danger alert-dismissible" style="text-align: right">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>خطا!</strong> مشخصات شما در سامانه ثبت نشد، حتما از صحت اطلاعات ورودی و منحصر به فرد بودن پلاک
+                در سامانه اطمینان حاصل فرمایید
+            </div>
+        {% elif status == 1 %}
+            <div class="alert alert-success alert-dismissible" style="text-align: right">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                مشخصات وارد شده با موفقیت در سامانه ثبت شد
+            </div>
+        {% endif %}
+
         <div class="tab">
 
 
@@ -30,9 +45,15 @@
                 </div>
             </div>
 
+{#            <select class="form-control" id="owner_select" name="owner_select_field">#}
+{#                <option value="new_owner">ثبت مالک جدید</option>#}
+{#                <option value="old_owner">از مالکین ثبت شده در سیستم</option>#}
+{#            </select>#}
+            {{ register_form.owner_select }}
+            <br>
 
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="owner_lastname_div">
                     <div class="form-group">
                         <div class="nk-int-st">
                             {#{{ register_form.owner_firstname }}#}
@@ -42,7 +63,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="owner_firstname_div">
                     <div class="form-group">
                         <div class="nk-int-st">
                             {#{{ register_form.owner_firstname }}#}
@@ -52,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="owner_phone_div">
                     <div class="form-group ic-cmp-int">
                         <div class="nk-int-st">
                             {#{{ register_form.owner_phone }}#}
@@ -66,7 +87,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div id="owner_nationalcode_div">
                     <div class="form-group ic-cmp-int">
                         <div class="nk-int-st">
                             {#{{ register_form.owner_nationalcode }}#}
@@ -81,7 +102,7 @@
                 </div>
 
                 {#            {{ register_form.owner_description }}#}
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="owner_description_div">
                     <div class="form-group">
                         <div class="nk-int-st">
                     <textarea class="form-control auto-size" rows="2" maxlength="300" name="owner_description"
@@ -91,7 +112,7 @@
                 </div>
             </div>
 
-            <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" id="owner_picture_div">
                 <div class="form-group ic-cmp-int">
                     <div class="nk-int-st">
                         <p style="text-align: right;">تصویر مالک</p>
@@ -111,54 +132,6 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group ic-cmp-int">
                     <div class="nk-int-st">
-                        <p style="text-align: right;">شماره پلاک</p>
-                    </div>
-                    <div class="form-ic-cmp">
-                        <i class="notika-icon notika-app"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <div class="form-group">
-                    <div class="nk-int-st">
-                        {#            {{ register_form.plate_firstnum }}#}
-                        <input type="text" class="form-control" maxlength="30" placeholder="۹۹"
-                               name="plate_firstnum">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <div class="form-group">
-                    <div class="nk-int-st">
-                        {#            {{ register_form.plate_alpha }}#}
-                        {#                        <input type="text" class="form-control" maxlength="30" placeholder="الف"#}
-                        {#                               name="plate_alpha">#}
-                        {{ register_form.plate_alpha }}
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <div class="form-group">
-                    <div class="nk-int-st">
-                        {#            {{ register_form.plate_secondnum }}#}
-                        <input type="text" class="form-control" maxlength="30" placeholder="۹۹۹"
-                               name="plate_secondnum">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <div class="form-group">
-                    <div class="nk-int-st">
-                        {#            {{ register_form.plate_citynum }}#}
-                        <input type="text" class="form-control" maxlength="30" placeholder="کد شهر"
-                               name="plate_citynum">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="form-group ic-cmp-int">
-                    <div class="nk-int-st">
                         <p style="text-align: right;">نوع خودرو</p>
                     </div>
                     <div class="form-ic-cmp">
@@ -166,7 +139,61 @@
                     </div>
                 </div>
             </div>
+
             {{ register_form.plate_type }}
+            <br>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group ic-cmp-int">
+                    <div class="nk-int-st">
+                        <p style="text-align: right;">شماره پلاک</p>
+                    </div>
+                    <div class="form-ic-cmp">
+                        <i class="notika-icon notika-app"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_firstnum_div">
+                <div class="form-group">
+                    <div class="nk-int-st">
+                        {#            {{ register_form.plate_firstnum }}#}
+                        <input type="number" class="form-control" placeholder="۹۹"
+                               name="plate_firstnum"
+                               id="plate_firstnum_id">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_alpha_div">
+                <div class="form-group">
+                    <div class="nk-int-st">
+                        {#            {{ register_form.plate_alpha }}#}
+                        {#                        <input type="text" class="form-control" maxlength="30" placeholder="الف"#}
+                        {#                               name="plate_alpha">#}
+
+                        {{ register_form.plate_alpha }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_secondnum_div">
+                <div class="form-group">
+                    <div class="nk-int-st">
+                        {#            {{ register_form.plate_secondnum }}#}
+                        <input type="number" class="form-control"
+                               name="plate_secondnum"
+                               id="plate_secondnum_id">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="plate_citynum_div">
+                <div class="form-group">
+                    <div class="nk-int-st">
+                        {#            {{ register_form.plate_citynum }}#}
+                        <input type="number" class="form-control" placeholder="کد شهر"
+                               name="plate_citynum">
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: right">مقادیر را به همان ترتیب مطالعه ی پلاک از سمت چپ به راست وارد کنید</p>
 
             {#            <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>#}
             {#            <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>#}
@@ -191,8 +218,16 @@
                     <div class="nk-int-st">
                         {#                                        {{ register_form.vehicle_color }}#}
 
-                        <input type="text" class="form-control" maxlength="20" placeholder="رنگ وسیله نقلیه"
+                        <input list="colors" type="text" class="form-control" maxlength="20"
+                               placeholder="رنگ وسیله نقلیه"
                                name="vehicle_color">
+                        <datalist id="colors">
+                            <option value="سفید">
+                            <option value="مشکی">
+                            <option value="نوک مدادی">
+                            <option value="نقره ای">
+                            <option value="بژ">
+                        </datalist>
                     </div>
                 </div>
             </div>
@@ -201,8 +236,16 @@
                     <div class="nk-int-st">
                         {#                                        {{ register_form.vehicle_type }}#}
 
-                        <input type="text" class="form-control" maxlength="30" placeholder="نوع وسیله نقلیه"
+                        <input list="types" type="text" class="form-control" maxlength="30"
+                               placeholder="نوع وسیله نقلیه"
                                name="vehicle_type">
+                        <datalist id="types">
+                            <option value="پراید">
+                            <option value="پژو ۴۰۵">
+                            <option value="پژو ۲۰۶">
+                            <option value="پژو ۲۰۷">
+                            <option value="پژو پارس">
+                        </datalist>
                     </div>
                 </div>
             </div>
@@ -309,6 +352,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 
-    {#    <script src="{% static 'js/cvp-specials/hide-show-fields-form.js' %}"></script>#}
+    <script src="{% static 'js/cvp-specials/hide-show-fields-form.js' %}"></script>
     <script src="{% static 'js/cvp-specials/multi-page-form.js' %}"></script>
 {% endblock %}

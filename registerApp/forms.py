@@ -4,43 +4,28 @@ from .models import Plate, Vehicle, Owner, \
     ALPHA_CHOICES, PLATE_CHOICES
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+OWNER_CHOICES = (
+    ("new_owner", "ثبت مالک جدید"),
+    ("old_owner", "از مالکین ثبت شده در سیستم"),)
+
 
 class RegisterForm(forms.Form):
-    owner_firstname = forms.CharField(max_length=20, required=True)
-    owner_lastname = forms.CharField(max_length=30, required=True)
+    owner_select = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=OWNER_CHOICES)
+
+    owner_firstname = forms.CharField(max_length=20, required=False)
+    owner_lastname = forms.CharField(max_length=30, required=False)
     owner_nationalcode = forms.CharField(max_length=10, required=True)
     owner_phone = forms.CharField(max_length=11, required=False)
     owner_description = forms.CharField(widget=forms.Textarea, required=False)
     owner_picture = forms.ImageField(required=False)
 
-    plate_type = forms.ChoiceField(choices=PLATE_CHOICES)
-    plate_firstnum = forms.IntegerField()
-    plate_secondnum = forms.IntegerField()
-    plate_citynum = forms.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(10)])
-    plate_alpha = forms.ChoiceField(choices=ALPHA_CHOICES)
+    plate_type = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=PLATE_CHOICES)
+    plate_firstnum = forms.IntegerField(required=True)
+    plate_secondnum = forms.IntegerField(required=True)
+    plate_citynum = forms.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(10)], required=False)
+    plate_alpha = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=ALPHA_CHOICES,
+                                    required=False)
 
-    vehicle_color = forms.CharField(max_length=10)
-    vehicle_type = forms.CharField(max_length=20)
-    vehicle_picture = forms.ImageField()
-
-
-class PlateRegisterForm(ModelForm):
-    class Meta:
-        model = Plate
-        fields = ['plate_type', 'firstNum', 'alpha', 'secondNum', 'cityNum']
-
-
-class VehicleRegisterForm(ModelForm):
-    # plate = forms.ModelChoiceField(Plate.objects.all())
-    # owner = forms.ModelChoiceField(Owner.objects.all())
-
-    class Meta:
-        model = Vehicle
-        fields = ['plate', 'type', 'color', 'owner', 'img']
-        widgets = {
-            'plate': forms.Select(choices=Plate.objects.all(), attrs={'class': 'form-control'}),
-            'owner': forms.Select(choices=Owner.objects.all(), attrs={'class': 'form-control'}),
-            'img': forms.ClearableFileInput(attrs={'class': 'form-control', 'multiple': False}),
-            'type': forms.TextInput(attrs={'class': 'form-control'}),
-            'color': forms.TextInput(attrs={'class': 'form-control'})
-        }
+    vehicle_color = forms.CharField(max_length=10, required=True)
+    vehicle_type = forms.CharField(max_length=20, required=True)
+    vehicle_picture = forms.ImageField(required=False)

@@ -62,6 +62,8 @@
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     <!-- modernizr JS
 		============================================ -->
+    <link href="{% static 'css/cvp-specials/register-form.css' %}" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -80,6 +82,7 @@
                   action="{% url 'login' %}">
                 {% csrf_token %}
                 <input name="form-key" value="ورود" hidden>
+
 
                 <div class="input-group">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
@@ -123,6 +126,18 @@
                 <input name="form-key" value="ثبت نام" hidden>
                 {#                                {{ signup_form.as_p }}#}
 
+                {% if status == -1 %}
+                    <div class="alert alert-danger alert-dismissible" style="text-align: right">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>خطا!</strong> مشخصات شما در سامانه ثبت نشد، دوباره مقادیر ورودی ها را چک نمایید
+                    </div>
+                {% elif status == 1 %}
+                    <div class="alert alert-success alert-dismissible" style="text-align: right">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        مشخصات وارد شده با موفقیت در سامانه ثبت شد
+                    </div>
+                {% endif %}
+
                 <div class="input-group">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
                     <div class="nk-int-st">
@@ -138,13 +153,15 @@
                 <div class="input-group">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-phone"></i></span>
                     <div class="nk-int-st">
-                        <input name="phone" type="text" class="form-control" placeholder="شماره تماس">
+                        <input name="phone" type="number" class="form-control" placeholder="شماره تماس"
+                               onKeyDown="if(this.value.length==11 && event.keyCode!==8) return false;">
                     </div>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-credit-card"></i></span>
                     <div class="nk-int-st">
-                        <input name="nationalCode" type="text" class="form-control" placeholder="کد ملی">
+                        <input name="nationalCode" type="number" class="form-control" placeholder="کد ملی"
+                               onKeyDown="if(this.value.length==10 && event.keyCode!==8) return false;">
                     </div>
                 </div>
                 <div class="input-group">

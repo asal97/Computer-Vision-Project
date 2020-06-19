@@ -5,6 +5,7 @@ from .forms import LoginForm, SignUpForm
 
 def login(request):
     login_form, signup_form = None, None
+    status = 0
     if request.method == "POST":
 
         if request.POST.get('form-key') == 'ورود':
@@ -18,6 +19,7 @@ def login(request):
 
         if request.POST.get('form-key') == 'ثبت نام':
             signup_form = SignUpForm(request.POST)
+            status = -1
             if signup_form.is_valid():
                 user = signup_form.save()
                 user.refresh_from_db()
@@ -29,11 +31,13 @@ def login(request):
                 # user = authenticate(username=user.username, password=raw_password)
                 # print(user)
                 # auth_login(request, user)
+                status = 1
                 return redirect('logout')
 
     context = {
         'login_form': login_form,
-        'signup_form': signup_form
+        'signup_form': signup_form,
+        'status': status
     }
 
     return render(request, 'login-register.html', context)

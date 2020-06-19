@@ -39,27 +39,102 @@ function nextPrev(n) {
     showTab(currentTab);
 }
 
-function validateForm() {
-    return true;
-    // TODO: This function deals with validation of the form fields
-    var x, y, i, valid = true;
-    x = document.getElementsByClassName("tab");
-    y = x[currentTab].getElementsByTagName("input");
-    // A loop that checks every input field in the current tab:
-    for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value == "") {
-            // add an "invalid" class to the field:
-            y[i].className += " invalid";
-            // and set the current valid status to false
-            valid = false;
+function validateMelliCode(melliCode) {
+
+    if (melliCode.length != 10) {
+        return false; // Melli Code is less or more than 10 digits
+    } else {
+        var sum = 0;
+
+        for (var i = 0; i < 9; i++) {
+            sum += parseInt(melliCode.charAt(i)) * (10 - i);
+        }
+
+        var lastDigit;
+        var divideRemaining = sum % 11;
+
+        if (divideRemaining < 2) {
+            lastDigit = divideRemaining;
+        } else {
+            lastDigit = 11 - (divideRemaining);
+        }
+
+        if (parseInt(melliCode.charAt(9)) == lastDigit) {
+            return true;
+        } else {
+            return false; // Invalid MelliCode
         }
     }
-    // If the valid status is true, mark the step as finished and valid:
-    if (valid) {
-        document.getElementsByClassName("step")[currentTab].className += " finish";
+}
+
+function validateForm() {
+    var form = document.forms["multiPageForm"];
+    var message = "دقت کنید حتما بخش های ضروری را پر کرده باشید";
+    var valid = true;
+    switch (currentTab) {
+        case 1: // مشخصات ماشین
+        {
+            if (document.getElementById("id_plate_type").value == "2") { // سواری انزلی
+                if(form["plate_firstnum"].value.length != 5){
+                    message = "بخش اول پلاک باید ۵ رقمی باشد";
+                    valid = false;
+                }
+                else if(form["plate_secondnum"].value.length != 2){
+                    message = "بخش دوم پلاک باید ۲ رقمی باشد";
+                    valid = false;
+                }
+            } else { // پلاک ملی
+                if(form["plate_firstnum"].value.length != 2){
+                    message = "بخش اول پلاک باید ۲ رقمی باشد";
+                    valid = false;
+                } else if(form["plate_secondnum"].value.length != 3){
+                    message = "بخش دوم پلاک باید ۳ رقمی باشد";
+                    valid = false;
+                } else if(form["plate_citynum"].value.length != 2){
+                    message = "کد شهرستان باید ۲ رقمی باشد";
+                    valid = false;
+                }
+            }
+            break;
+        }
+        case 2: // مشخصات ظاهری
+        {
+            if (form["vehicle_color"].value.length && form["vehicle_type"].value.length &&
+                form["vehicle_picture"].value.length) {
+
+            } else {
+                valid = false;
+            }
+            break;
+        }
+        default: // مشخصات مالک
+        {
+            if (document.getElementById("id_owner_select").value == "old_owner") { // از مالکین ثبت شده در سیستم
+                if (!validateMelliCode(form["owner_nationalcode"].value)) {
+                    message = "کد ملی وارد شده معتبر نمی باشد";
+                    valid = false;
+                }
+            } else { // ثبت مالک جدید
+                if (form["owner_firstname"].value.length && form["owner_lastname"].value.length &&
+                    form["owner_nationalcode"].value.length && form["owner_phone"].value.length &&
+                    form["owner_picture"].value.length) {
+                    if (!validateMelliCode(form["owner_nationalcode"].value)) {
+                        message = "کد ملی وارد شده معتبر نمی باشد";
+                        valid = false;
+                    } else if (form["owner_phone"].value.length < 10) {
+                        message = "تعداد ارقام شماره تماس وارد شده را چک کنید";
+                        valid = false;
+                    }
+                } else {
+                    valid = false;
+                }
+            }
+        }
     }
-    return valid; // return the valid status
+    if (!valid) {
+        alert(message);
+    }
+    return valid;
 }
 
 function fixStepIndicator(n) {
