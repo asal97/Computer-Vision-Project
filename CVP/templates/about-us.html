@@ -5,9 +5,9 @@
 {% load static %}
 {% block extra_header %}
 
-    <link rel="stylesheet" href="{% static ' normalize.css' %}">
-	<link rel="stylesheet" href="{% static 'ideal-image-slider.css'%}">
-	<link rel="stylesheet" href="{% static 'default.css'%}">
+    <link rel="stylesheet" href="{% static 'slider/normalize.css' %}">
+	<link rel="stylesheet" href="{% static 'slider/ideal-image-slider.css' %}">
+	<link rel="stylesheet" href="{% static 'slider/default.css' %}">
 	<style media="screen">
 	#slider {
 		max-width: 900px;
@@ -210,10 +210,14 @@
 <!----- screenshots part --->
 
 <div id="slider" >
-		<img src="{% static 'Screen Shot 2020-06-17 at 15.00.02.png' %}" data-src-2x="{% static '1@2x.jpg' %}" alt="Slide 1" />
-		<img data-src="{% static '2.jpg' %}" data-src-2x="{% static '2@2x.jpg' %}" src="" alt="Slide 2" />
-		<a href="http://example.com"><img data-src="{% static '3.jpg' %}" data-src-2x="{% static '3@2x.jpg' %}" src="" alt="Slide 3" /></a>
-		<img data-src="{% static '4.jpg' %}" data-src-2x="{% static '4@2x.jpg' %}" src="" alt="Slide 4" />
+		<img src="{% static 'slider/Screen Shot 2020-06-17 at 15.00.02.png' %}" alt="Slide 1" />
+		<img data-src="{% static 'slider/index.png' %}" src="" alt="Slide 2" />
+		<img data-src="{% static 'slider/table.png' %}" src="" alt="Slide 3" />
+		<img data-src="{% static 'slider/Traffic_report.png' %}" src="" alt="Slide 4" />
+	    <img src="{% static 'slider/owner-reg.png' %}" alt="Slide 5" />
+		<img data-src="{% static 'slider/melli-reg.png' %}" src="" alt="Slide 6" />
+		<img data-src="{% static 'slider/anzali-reg.png' %}" src="" alt="Slide 7" />
+		<img data-src="{% static 'slider/car-reg.png' %}" src="" alt="Slide 8" />
 </div>
 <!----- end of screenshots part --->
 
@@ -347,8 +351,8 @@
     <br>
 {% endblock content %}
 {% block extra_scripts %}
-    <script src="{% static 'ideal-image-slider.js' %}"></script>
-	<script src="{% static 'iis-bullet-nav.js' %}"></script>
+    <script src="{% static 'slider/ideal-image-slider.js' %}"></script>
+	<script src="{% static 'slider/iis-bullet-nav.js' %}"></script>
 	<script>
 	var slider = new IdealImageSlider.Slider('#slider');
 	slider.addBulletNav();
