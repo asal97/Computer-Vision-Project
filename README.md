@@ -31,7 +31,7 @@ Create the database
 * Notice that you must run these command in you IDE terminal in the exact
 order listed below!
 
-###windows:
+### windows:
 ```
 1. py manage.py makemigrations registerApp
 
@@ -55,7 +55,7 @@ Finally, run the development server
 $ py manage.py runserver
 ```
 
-###linux:
+### linux:
 * use either python3 or python(in the beginning of the commands) depending on
  whether which of them works for your system
 
