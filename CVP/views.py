@@ -72,23 +72,22 @@ def get_week_day(taradod):
     end = datetime.datetime.today().date() + datetime.timedelta(days=endCount)
     week = taradod.objects.filter(seen__gte=start,
                                   seen__lte=end)
-
-    firstCar = week[0]
-    count = 0
-    for car in week:
-        if car.seen.day == firstCar.seen.day:
-            count += 1
-        else:
-            days.append(count)
-            dayDif = car.seen.day - firstCar.seen.day
-            for i in range(0, dayDif - 1):
-                days.append(0)
-            firstCar = car
-            count = 1
-    days.append(count)
-    for i in range(0, endCount):
-        days.append(0)
-
+    if len(week) > 0:
+        firstCar = week[0]
+        count = 0
+        for car in week:
+            if car.seen.day == firstCar.seen.day:
+                count += 1
+            else:
+                days.append(count)
+                dayDif = car.seen.day - firstCar.seen.day
+                for i in range(0, dayDif - 1):
+                    days.append(0)
+                firstCar = car
+                count = 1
+        days.append(count)
+        for i in range(0, endCount):
+            days.append(0)
     return days
 
 
@@ -161,28 +160,29 @@ def get_this_month(taradod):
 
     Month = taradod.filter(seen__gte=start,
                            seen__lte=end)
-    firstCar = Month[0]
     days = []
-    date = firstCar.seen.date() - start
-    for i in range(0, date.days):
-        days.append(0)
-    count = 0
-    for car in Month:
-        if car.seen.day == firstCar.seen.day:
-            count += 1
-        else:
-            days.append(count)
-            dayDif = car.seen.day - firstCar.seen.day
-            for i in range(0, dayDif - 1):
-                days.append(0)
-            firstCar = car
-            count = 1
-
-    days.append(count)
-    if Month[len(Month) - 1].seen.date() < end:
-        for i in range(0,
-                       (end - Month[len(Month) - 1].seen.date()).days):
+    if len(Month) > 0:
+        firstCar = Month[0]
+        date = firstCar.seen.date() - start
+        for i in range(0, date.days):
             days.append(0)
+        count = 0
+        for car in Month:
+            if car.seen.day == firstCar.seen.day:
+                count += 1
+            else:
+                days.append(count)
+                dayDif = car.seen.day - firstCar.seen.day
+                for i in range(0, dayDif - 1):
+                    days.append(0)
+                firstCar = car
+                count = 1
+
+        days.append(count)
+        if Month[len(Month) - 1].seen.date() < end:
+            for i in range(0,
+                           (end - Month[len(Month) - 1].seen.date()).days):
+                days.append(0)
 
     return days
 
@@ -285,12 +285,20 @@ def table(request):
 
     # getting days of week
     week = get_week_day(Taradod)
-    last_day = week[len(week) - 1]
-    week = week[0:len(week) - 1]
+    if len(week) > 0:
+        last_day = week[len(week) - 1]
+        week = week[0:len(week) - 1]
+    else:
+        week = np.zeros(6, dtype=int)
+        last_day = 0
 
     days_of_month = get_this_month(Taradod_list)
-    last_day_month = days_of_month[len(days_of_month) - 1]
-    days_of_month = days_of_month[0:len(days_of_month) - 1]
+    if len(days_of_month) > 0:
+        last_day_month = days_of_month[len(days_of_month) - 1]
+        days_of_month = days_of_month[0:len(days_of_month) - 1]
+    else:
+        days_of_month = np.zeros(11, dtype=int)
+        last_day_month = int(0)
 
     months_of_year = get_this_year(Taradod_list)
     last_month = months_of_year[len(months_of_year) - 1]
