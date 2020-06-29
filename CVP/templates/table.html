@@ -129,6 +129,30 @@
                                     </tr>
                                 {% endfor %}
 
+                                <tr {% if data.approved %}style="cursor: pointer"
+                                        onclick="window.location='{{ data.get_absolute_url }}';"{% endif %}>
+
+                                        <td class="persianTable">{{ data.plate }}</td>
+
+                                        {% if data.approved == True %}
+                                            <td>
+                                                <button class="disabled  button-icon-btn btn btn-success success-icon-notika btn-reco-mg ">
+                                                    <i class="notika-icon notika-checked"></i></button>
+                                                <p class="hidden">مجاز True</p></td>
+                                        {% endif %}
+
+                                        {% if data.approved == False %}
+                                            <td>
+                                                <button class="disabled  button-icon-btn btn btn-danger danger-icon-notika btn-reco-mg">
+                                                    <i class="notika-icon notika-close"></i></button>
+                                                <p class="hidden">False غیر مجاز</p></td>
+                                        {% endif %}
+
+                                        <td class="persianTable">{{ data.seen.hour }}:{{ data.seen.minute }}:{{ data.seen.second }}</td>
+                                        <td class="persianTable">{{ data.seen.date }}</td>
+
+                                    </tr>
+
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -148,6 +172,7 @@
 {% endblock content %}
 
 {% block extra_scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
     <script src="{% static 'js/cvp-specials/update-table-rows.js' %}"></script>
 

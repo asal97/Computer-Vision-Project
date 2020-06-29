@@ -2,7 +2,7 @@ import jdatetime
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.db.models import Q
 from .models import Taradod
-from registerApp.models import Vehicle, Plate
+from registerApp.models import Vehicle
 import pusher
 
 ALPHA_MAP = {x: y + 1 for y, x in enumerate(
@@ -14,7 +14,7 @@ ALPHA_MAP = {x: y + 1 for y, x in enumerate(
 def add_row(request):
     # TODO: mohandes tourani
     taradod_obj = Taradod(
-        plate='92saad853iran22',
+        plate='92-12853anzali',
     )
     taradod_obj.save()
 
@@ -27,9 +27,13 @@ def add_row(request):
     )
 
     pusher_client.trigger('plate-detection', 'add-table-row', {'new-plate': taradod_obj.plate,
-                                                               'new-date': taradod_obj.seen,
-                                                               'new-img': taradod_obj.img,
-                                                               'new-approved': taradod_obj.approved})
+                                                               'new-seen-hour': 'taradod_obj.seen.hour',
+                                                               'new-seen-minute': 'taradod_obj.seen.minute',
+                                                               'new-seen-second': 'taradod_obj.seen.second',
+                                                               'new-seen-date': 'taradod_obj.seen.date',
+                                                               # 'new-img': 'TODO',
+                                                               'new-approved': taradod_obj.approved,
+                                                               'new-url': taradod_obj.get_absolute_url()})
     return HttpResponse(200)
 
 def traffic_report(request, traffic_id):
