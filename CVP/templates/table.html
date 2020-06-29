@@ -23,11 +23,11 @@
                             {% for hour in today %}
                                 {{ hour }},
                             {% endfor %}
-                        {{ last_hour }}
+                            {{ last_hour }}
                         </div>
                     </div>
                 </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class=" wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class=" website-traffic-ctn">
                             <h2><span class="">{{ weekCount }}</span></h2>
@@ -37,7 +37,7 @@
                             {% for day in week %}
                                 {{ day }},
                             {% endfor %}
-                        {{ last_day }}
+                            {{ last_day }}
                         </div>
                     </div>
                 </div>
@@ -48,10 +48,10 @@
                             <p class="pForDiagram">این ماه</p>
                         </div>
                         <div class="sparkline-bar-stats3">
-                             {% for day in days %}
+                            {% for day in days %}
                                 {{ day }},
                             {% endfor %}
-                        {{ last_day_month }}
+                            {{ last_day_month }}
                         </div>
                     </div>
                 </div>
@@ -62,10 +62,10 @@
                             <p class="pForDiagram">امسال</p>
                         </div>
                         <div class="sparkline-bar-stats4">
-                              {% for month in months %}
+                            {% for month in months %}
                                 {{ month }},
                             {% endfor %}
-                        {{ last_month }}
+                            {{ last_month }}
                         </div>
                     </div>
                 </div>
@@ -92,13 +92,13 @@
                             {#                            <p>It's just that simple. Turn your simple table into a sophisticated data table and offer your users a nice experience and great features without any effort.</p>#}
                         </div>
                         <div id="testing" class="table-responsive">
-                        <table id="data-table-basic" class="table table-striped">
+                            <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                 <tr>
-                                        <th>پلاک</th>
-                                        <th>مجوز عبور </th>
+                                    <th>پلاک</th>
+                                    <th>مجوز عبور</th>
                                     <th>ساعت عبور</th>
-                                        <th>تاریخ عبور</th>
+                                    <th>تاریخ عبور</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -107,21 +107,24 @@
                                     <tr {% if data.approved %}style="cursor: pointer"
                                         onclick="window.location='{{ data.get_absolute_url }}';"{% endif %}>
 
-                                    <td class="persianTable">{{ data.plate }}</td>
+                                        <td class="persianTable">{{ data.plate }}</td>
 
-                                    {% if data.approved == True %}
-                                        <td>
-                                            <button  class="disabled  button-icon-btn btn btn-success success-icon-notika btn-reco-mg "><i class="notika-icon notika-checked"></i></button>
-                                        <p class="hidden">مجاز True</p></td>
-                                    {% endif%}
+                                        {% if data.approved == True %}
+                                            <td>
+                                                <button class="disabled  button-icon-btn btn btn-success success-icon-notika btn-reco-mg ">
+                                                    <i class="notika-icon notika-checked"></i></button>
+                                                <p class="hidden">مجاز True</p></td>
+                                        {% endif %}
 
-                                    {% if data.approved == False %}
-                                        <td><button class="disabled  button-icon-btn btn btn-danger danger-icon-notika btn-reco-mg"><i class="notika-icon notika-close"></i></button>
-                                         <p class="hidden">False غیر مجاز</p></td>
-                                    {% endif %}
+                                        {% if data.approved == False %}
+                                            <td>
+                                                <button class="disabled  button-icon-btn btn btn-danger danger-icon-notika btn-reco-mg">
+                                                    <i class="notika-icon notika-close"></i></button>
+                                                <p class="hidden">False غیر مجاز</p></td>
+                                        {% endif %}
 
-                                    <td class="persianTable">{{data.seen.hour}}:{{ data.seen.minute }}:{{ data.seen.second }}</td>
-                                    <td class="persianTable">{{data.seen.date}}</td>
+                                        <td class="persianTable">{{ data.seen.hour }}:{{ data.seen.minute }}:{{ data.seen.second }}</td>
+                                        <td class="persianTable">{{ data.seen.date }}</td>
 
                                     </tr>
                                 {% endfor %}
@@ -145,10 +148,14 @@
 {% endblock content %}
 
 {% block extra_scripts %}
-    <script>
-   setTimeout(function(){
-       location.reload();},
-       60000);
-</script>
+    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+    <script src="{% static 'js/cvp-specials/update-table-rows.js' %}"></script>
+
+{#    <script>#}
+{#        setTimeout(function () {#}
+{#                location.reload();#}
+{#            },#}
+{#            60000);#}
+{#    </script>#}
 {% endblock %}
 
