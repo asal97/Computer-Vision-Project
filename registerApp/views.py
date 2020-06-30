@@ -2,11 +2,14 @@ from django.shortcuts import render
 from .forms import RegisterForm
 from .models import Owner, Plate, Vehicle
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
+
 from django.core.exceptions import ObjectDoesNotExist
 
 import enum
 
 
+@login_required(login_url='login')
 def register(request):
     # register_form = RegisterForm(request.POST or None)
     status = 0
