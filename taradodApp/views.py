@@ -12,9 +12,9 @@ ALPHA_MAP = {x: y + 1 for y, x in enumerate(
 
 
 def add_row(request):
-    # TODO: mohandes tourani
+    # TODO: استفاده از داده های واقعی
     taradod_obj = Taradod(
-        plate='92-12853anzali',
+        plate='test-pelak',
     )
     taradod_obj.save()
 
@@ -27,14 +27,15 @@ def add_row(request):
     )
 
     pusher_client.trigger('plate-detection', 'add-table-row', {'new-plate': taradod_obj.plate,
-                                                               'new-seen-hour': 'taradod_obj.seen.hour',
-                                                               'new-seen-minute': 'taradod_obj.seen.minute',
-                                                               'new-seen-second': 'taradod_obj.seen.second',
-                                                               'new-seen-date': 'taradod_obj.seen.date',
-                                                               # 'new-img': 'TODO',
+                                                               'new-seen-hour': 'TODO',
+                                                               'new-seen-minute': 'TODO',
+                                                               'new-seen-second': 'TODO',
+                                                               'new-seen-date': 'TODO',
+                                                               'new-img': 'TODO',
                                                                'new-approved': taradod_obj.approved,
                                                                'new-url': taradod_obj.get_absolute_url()})
     return HttpResponse(200)
+
 
 def traffic_report(request, traffic_id):
     this_traffic = get_object_or_404(Taradod, id=traffic_id)
