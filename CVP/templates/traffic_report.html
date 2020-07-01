@@ -20,16 +20,32 @@
                             <h1 class="basic_table" style="text-align: center;
     margin-bottom: 15px;">{{ this_vehicle.plate }}</h1>
 
-<!-- button for changing active status -->
+                            <!-- button for changing active status -->
                             <form method='POST'>
-                                 {% csrf_token %}
+                                {% csrf_token %}
                                 <button id="deactive" type='submit' style="text-align: center;
     margin: 0 auto;
-    display: block;font-size: 22px;" class="btn btn-danger notika-btn-danger">غیر فعال سازی</button>
+    display: block;font-size: 22px;" class="btn btn-danger notika-btn-danger">غیر فعال سازی
+                                </button>
 
                             </form>
-<!-- end of button for changing active status -->
+                            <!-- end of button for changing active status -->
 
+
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-11 col-xs-12">
+                            <div class="mg-tb-30">
+                                <img src="{{ this_traffic.img.url }}" alt="تصویر تردد">
+
+
+                                {#                                <div class="embed-responsive embed-responsive-16by9 capture">#}
+                                {#                                    <iframe class="embed-responsive-item"#}
+                                {#                                            src=""#}
+                                {#                                            allowfullscreen></iframe>#}
+                                {#                                </div>#}
+
+                            </div>
 
                         </div>
 
@@ -112,14 +128,3 @@
 
 
 {% endblock content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{#{{ this_traffic.plate }}#}
-{{ this_vehicle.owner.first_name }} {{ this_vehicle.color }}
-</body>
-</html>
