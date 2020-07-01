@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import Taradod
 from registerApp.models import Vehicle
+from django.contrib.auth.decorators import login_required
 
 ALPHA_MAP = {x: y + 1 for y, x in enumerate(
     ['الف', 'ب', 'پ', 'ت', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع',
@@ -10,6 +11,7 @@ ALPHA_MAP = {x: y + 1 for y, x in enumerate(
 )}
 
 
+@login_required(login_url='login')
 def traffic_report(request, traffic_id):
     this_traffic = get_object_or_404(Taradod, id=traffic_id)
     plate_split = this_traffic.plate.split('-')

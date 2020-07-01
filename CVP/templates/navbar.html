@@ -6,22 +6,24 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 
-                    <p class="dateCss inout  pr-6" id="date_place"></p>
-{#<a href="#"><img src="{% static 'img/logo/logo.png' %}" alt="" /></a>#}
+                <p class="dateCss inout  pr-6" id="date_place"></p>
+                {#<a href="#"><img src="{% static 'img/logo/logo.png' %}" alt="" /></a>#}
 
 
             </div>
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 
-{#<a href="#"><img src="{% static 'img/logo/logo.png' %}" alt="" /></a>#}
+                {#<a href="#"><img src="{% static 'img/logo/logo.png' %}" alt="" /></a>#}
 
 
-                        {% if not user.is_authenticated %}
-                            <a href="{% url 'login' %}" class="PageTitle inout pr-6 ">ورود</a>
-                        {% else %}
-                          <a href="#" class="PageTitle inout pr-6 ">خروج</a>
-                        {% endif %}
-                    </div>
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'login' %}" class="PageTitle inout pr-6 ">ورود به پنل کاربری</a>
+                {% else %}
+                    <a href="{% url 'logout' %}" class="PageTitle inout pr-6 ">کاربر
+                        <strong>{{ user.last_name }}</strong> [خروج]</a>
+                {% endif %}
+
+            </div>
 
 
         </div>

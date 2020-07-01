@@ -12,10 +12,11 @@ from calendar import monthrange
 import csv
 from django.http import HttpResponse
 from django.db.models import Q
-
+from django.contrib.auth.decorators import login_required
 from collections import Counter
 
 
+@login_required(login_url='login')
 def index(request):
     Taradod_list = Taradod.objects.filter(seen__gte=datetime.date.today())
     Vehicle_list = []
@@ -269,6 +270,7 @@ def get_this_year(taradod):
     return result
 
 
+@login_required(login_url='login')
 def table(request):
     vehicle_status = []
     Taradod_list = Taradod.objects.all()
@@ -339,6 +341,7 @@ def table(request):
     return render(request, 'table.html', context)
 
 
+@login_required(login_url='login')
 def download_report(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="report.csv"'
