@@ -89,7 +89,10 @@ def get_week_day(taradod):
         days.append(count)
         for i in range(0, endCount):
             days.append(0)
-    return days
+
+        return days
+    else:
+        return week
 
 
 def get_this_month(taradod):
@@ -292,7 +295,7 @@ def table(request):
         week = week[0:len(week) - 1]
     else:
         week = np.zeros(6, dtype=int)
-        last_day = 0
+        last_day = int(0)
 
     days_of_month = get_this_month(Taradod_list)
     if len(days_of_month) > 0:
@@ -320,19 +323,19 @@ def table(request):
 
     context = {
 
-        'monthsCount': np.sum(months_of_year) + last_month,
+        'monthsCount': int(np.sum(months_of_year) + last_month),
         'months': months_of_year,
         'last_month': last_month,
 
         'days': days_of_month,
-        'daysCount': np.sum(days_of_month) + last_day_month,
+        'daysCount': int(np.sum(days_of_month) + last_day_month),
         'last_day_month': last_day_month,
 
-        'weekCount': np.sum(week) + last_day,
+        'weekCount': int(np.sum(week) + last_day),
         'week': week,
         'last_day': last_day,
 
-        'todayCount': np.sum(today) + last_hour,
+        'todayCount': int(np.sum(today) + last_hour),
         'today': today,
         'last_hour': last_hour,
 
